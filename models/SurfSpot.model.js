@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
-const surfSpotSchema = new mongoose.Schema({
+const surfSpotSchema = new Schema({
   spotImage: {
     type: String,
-    required,
+    required: true,
   },
   beachName: {
     type: String,
@@ -11,16 +11,16 @@ const surfSpotSchema = new mongoose.Schema({
   country: {
     type: String,
     enum: [
-      Denmark,
-      France,
-      Great - Britain,
-      Greece,
-      Ireland,
-      Italy,
-      Netherlands,
-      Norway,
-      Portugal,
-      Spain,
+      "Denmark",
+      "France",
+      "Great Britain",
+      "Greece",
+      "Ireland",
+      "Italy",
+      "Netherlands",
+      "Norway",
+      "Portugal",
+      "Spain",
     ],
     required: true,
   },
@@ -30,7 +30,7 @@ const surfSpotSchema = new mongoose.Schema({
   },
   skillLevel: {
     type: String,
-    enum: [Beginner, Intermediate, Advanced],
+    enum: ["Beginner", "Intermediate", "Advanced"],
     required: true,
   },
   spotDescription: {
@@ -43,12 +43,12 @@ const surfSpotSchema = new mongoose.Schema({
   },
   amenities: {
     type: String,
-    enum: [Showers, Toilets, None],
+    enum: ["Showers", "Toilets", "None"],
     required: true,
   },
   foodSpots: {
     type: String,
-    enum: [Cafe, Restaurant, Supermarket, Bar],
+    enum: ["Cafe", "Restaurant", "Supermarket", "Bar"],
     required: true,
   },
   rating: {
@@ -58,15 +58,13 @@ const surfSpotSchema = new mongoose.Schema({
   surfingType: {
     type: String,
     // syntax for multiple words in enum
-    enum: [Surfing, Body - Surfing, Body - Boarding],
+    enum: ["Surfing", "Body Surfing", "Body Boarding"],
     required: true,
   },
-  user: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const SurfSpot = model("SurfSpot", surfSpotSchema);
