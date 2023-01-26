@@ -15,9 +15,12 @@
   <label>
     Surf Level: 
     {{!-- <input type="text" name="author" /> --}}
-    <select name="surf-level" >
+  {{!--   select / name = Model Name
+    each = vairable name from routes --}}
+    
+    <select name="surfLevel" > 
         {{#each surfingLevel}}
-        <option value="name">{{this}}</option>
+        <option value="{{this}}">{{this}}</option>
         {{/each}}
     </select>
   </label>
@@ -25,9 +28,9 @@
 <label>
     Type of Surfing: 
     {{!-- <input type="text" name="author" /> --}}
-    <select name="surf-level" multiple>
+    <select name="typeOfSurfing" multiple>
         {{#each surfingType}}
-        <option value="name">{{this}}</option>
+        <option value="{{this}}">{{this}}</option>
         {{/each}}
     </select>
   </label>

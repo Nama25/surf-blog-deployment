@@ -73,6 +73,7 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
       })
         .then((result) => {
           console.log("New user created:", result);
+          req.session.currentUser = result
           res.redirect("/create-user-profile");
         })
         .catch((err) => {
@@ -88,12 +89,12 @@ router.get("/user-profile", isLoggedIn, (req, res) => {
 });
 
 // CREATE USER PROFILE route
-// GET route
-// Do we have to add Middleware??????
-router.get("/create-user-profile", (req, res) => {
+// GET route  
   const surfingLevel = ["Beginner", "Intermediate", "Advanced"]
   const surfingType = ["Surfing", "Body Surfing", "Body Boarding"]
-  res.render("user/create-user-profile", {surfingLevel, surfingType});
+// Do we have to add Middleware??????
+router.get("/create-user-profile", isLoggedIn, (req, res) => {
+ res.render("user/create-user-profile", {surfingLevel, surfingType});
 });
 
 //POST route

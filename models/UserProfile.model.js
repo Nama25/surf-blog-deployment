@@ -5,7 +5,7 @@ const userProfileSchema = new Schema(
   {
     profileImage: {
       type: String,
-      required: true,
+      // required: true,
     },
     surfLevel: {
       type: String,
