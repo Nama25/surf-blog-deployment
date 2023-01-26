@@ -1,10 +1,7 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Surfers!</p>
 
-<div>
-<button><a href="/signup">Sign Up!</a></button>
-</div>
-
-<div>
-<button><a href="/login">Login!</a></button>
-</div>
+{{!-- Add username so person knows they're logged in  --}}
+{{#if userInSession}}
+<h1>{{userInSession.username}}</h1>
+{{/if}}

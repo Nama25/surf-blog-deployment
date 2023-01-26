@@ -2,42 +2,42 @@
 
 <form action="/create-user-profile" method="POST">
 
-  {{!-- <label>
-    Name: --}}
-    {{!-- <input type="text" name="name" value="{{result.username}}"/> --}}
- {{!--  </label>
- --}}
-   
-   <label for="">
+  <label>
+    {{#if userInSession}}
+      <h2>Welcome {{userInSession.username}}!</h2>
+      <p>Please create your profile page</p>
+    {{!-- {{else}} --}}
+
+      {{!-- <br /> --}}
+      {{!-- <p>Still no logged in user, sorry!</p> --}}
+    {{/if}}
+  </label>
+
+  <label for="">
     Image:
   </label>
 
   <label>
-    Surf Level: 
-    {{!-- <input type="text" name="author" /> --}}
-  {{!--   select / name = Model Name
-    each = vairable name from routes --}}
-    
-    <select name="surfLevel" > 
-        {{#each surfingLevel}}
+    Surf Level:
+    {{! <input type="text" name="author" /> }}
+    {{!   select / name = Model Name
+    each = vairable name from routes }}
+
+    <select name="surfLevel">
+      {{#each surfingLevel}}
         <option value="{{this}}">{{this}}</option>
-        {{/each}}
+      {{/each}}
     </select>
   </label>
 
-<label>
-    Type of Surfing: 
-    {{!-- <input type="text" name="author" /> --}}
+  <label>
+    Type of Surfing:
     <select name="typeOfSurfing" multiple>
-        {{#each surfingType}}
+      {{#each surfingType}}
         <option value="{{this}}">{{this}}</option>
-        {{/each}}
+      {{/each}}
     </select>
   </label>
-
-
-
-
 
   <label>
     My Favorite Spots:

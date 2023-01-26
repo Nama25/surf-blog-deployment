@@ -1,12 +1,14 @@
 
-{{#if userInSession}}
-  <h2>Welcome {{ userInSession.username }}!</h2>
+{{#if result.surfLevel}}
+  <h2>Hi {{ user.username }}!</h2>
   <p>This is your profile page my friend!</p>
-  <button>
-    <a href="/user-profile">Reload the page</a>
-  </button>
 {{else}}
-  
   <br><p>Still no logged in user, sorry!</p>
  
 {{/if}}
+<img src="" alt="">
+<p>Surf Level: {{result.surfLevel}}</p>
+<p>Type of Surfing: {{result.typeOfSurfing}}</p>
+<p>Favorite Spots: {{result.favoriteSpots}}</p>
+<p>Created: {{result.createdAt}}</p>
+
