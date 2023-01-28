@@ -1,6 +1,7 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Surfers!</p>
 
-<div>
-<button><a href="/signup">Sign Up!</a></button>
-</div>
+{{!-- Add username so person knows they're logged in  --}}
+{{#if user}}
+<h1>{{user.username}}</h1>
+{{/if}}

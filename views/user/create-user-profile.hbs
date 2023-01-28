@@ -1,0 +1,48 @@
+<h1>Create User Profile</h1>
+
+<form action="/create-user-profile" method="POST">
+
+  <label>
+    {{#if userInSession}}
+      <h2>Welcome {{userInSession.username}}!</h2>
+      <p>Please create your profile page</p>
+    {{!-- {{else}} --}}
+
+      {{!-- <br /> --}}
+      {{!-- <p>Still no logged in user, sorry!</p> --}}
+    {{/if}}
+  </label>
+
+  <label for="">
+    Image:
+  </label>
+
+  <label>
+    Surf Level:
+    {{! <input type="text" name="author" /> }}
+    {{!   select / name = Model Name
+    each = vairable name from routes }}
+
+    <select name="surfLevel">
+      {{#each surfingLevel}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label>
+    Type of Surfing:
+    <select name="typeOfSurfing" multiple>
+      {{#each surfingType}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label>
+    My Favorite Spots:
+    <textarea name="favoriteSpots" cols="30" rows="4"> </textarea>
+  </label>
+
+  <button type="submit"> Create </button>
+</form>
