@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const Comments = require("../models/Comments.model");
+/* const Comments = require("../models/Comments.model");
 const SurfSpot = require("../models/SurfSpot.model");
-const UserProfile = require("../models/UserProfile.model");
+const UserProfile = require("../models/UserProfile.model"); */
 const saltRounds = 10;
 const mongoose = require("mongoose");
 const { isLoggedIn, isLoggedOut } = require("../middleware/middleware.js");
@@ -82,90 +82,6 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
           console.log(err);
         });
     });
-});
-
-// USER PROFILE ROUTES
-// GET route
-router.get("/user-profile/:username", isLoggedIn, (req, res) => {
-  console.log("req.params?", req.params.username);
-  UserProfile.findById(req.params.username)
-    .then((result) => {
-      res.render("user/user-profile", {
-        result,
-        user: req.session.currentUser,
-      });
-    })
-    .catch((error) => console.log("User Profile Error:", error));
-});
-
-// CREATE USER PROFILE route
-// GET route
-const surfingLevel = ["Beginner", "Intermediate", "Advanced"];
-const surfingType = ["Surfing", "Body Surfing", "Body Boarding"];
-// Do we have to add Middleware??????
-router.get("/create-user-profile", isLoggedIn, (req, res) => {
-  res.render("user/create-user-profile", {
-    surfingLevel,
-    surfingType,
-    userInSession: req.session.currentUser,
-  });
-});
-
-//POST route
-router.post("/create-user-profile", (req, res) => {
-  console.log(req.body);
-
-  const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
-
-  UserProfile.create({
-    profileImage: profileImage,
-    surfLevel: surfLevel,
-    typeOfSurfing: typeOfSurfing,
-    favoriteSpots: favoriteSpots,
-  })
-    .then((result) => {
-      console.log(result);
-      res.redirect(`/user-profile/${result._id}`);
-    })
-    .catch((err) => console.log(err));
-});
-
-// EDIT USER PROFILE route
-// GET route
-router.get("/user-profile/edit", isLoggedIn, (req, res) => {
-  res.render("user/edit-user-profile", {
-    userInSession: req.session.currentUser,
-  });
-});
-
-// ALL SURF SPOTS ROUTES
-// GET ROUTE
-router.get("/all-surf-spots", (req, res) => {
-  res.render("surf-spots/all-surf-spots");
-});
-
-// CREATE SURF SPOTS ROUTES
-// GET route
-router.get("/create-surf-spot", isLoggedIn, (req, res) => {
-  res.render("surf-spots/create-surf-spot", {
-    userInSession: req.session.currentUser,
-  });
-});
-
-// SURF SPOT PROFILE ROUTES
-// GET route
-router.get("/surf-spot-profile/:id", isLoggedIn, (req, res) => {
-  res.render("surf-spots/surf-spot-profile", {
-    userInSession: req.session.currentUser,
-  });
-});
-
-// EDIT SURF SPOT PROFILE ROUTES
-// GET route
-router.get("/surf-spot-profile/:id/edit", isLoggedIn, (req, res) => {
-  res.render("surf-spots/edit-surf-spot", {
-    userInSession: req.session.currentUser,
-  });
 });
 
 // LOGOUT ROUTES
