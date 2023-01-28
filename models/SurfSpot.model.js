@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 const surfSpotSchema = new Schema({
   spotImage: {
     type: String,
-    required: true,
+    // required: true,
   },
   beachName: {
     type: String,
@@ -55,8 +55,8 @@ const surfSpotSchema = new Schema({
     type: Number,
     enum: [1, 2, 3, 4, 5],
   },
-  surfingType: {
-    type: String,
+  typeOfSurfing: {
+    type: [String],
     // syntax for multiple words in enum
     enum: ["Surfing", "Body Surfing", "Body Boarding"],
     required: true,

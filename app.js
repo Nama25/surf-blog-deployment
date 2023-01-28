@@ -40,7 +40,9 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 app.use("/", require("./routes/auth.routes"));
-
+app.use("/", require("./routes/user.routes"));
+app.use("/", require("./routes/surf.routes"));
+app.use("/", require("./routes/comments.routes"));
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
