@@ -17,7 +17,7 @@ const userProfileSchema = new Schema(
       enum: ["Beginner", "Intermediate", "Advanced"],
     },
     typeOfSurfing: {
-      type: String,
+      type: [String],
       required: true,
       enum: ["Surfing", "Body Surfing", "Body Boarding"],
     },

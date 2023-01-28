@@ -24,8 +24,17 @@ require('./config/session.config')(app);
 const capitalize = require("./utils/capitalize");
 const projectName = "surfblog";
 
+//creates an object, that is glabally available to the render pages
+
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+// everytime when we call a route it will execute next, and calls the next after
+app.use((req, res, next) => {
+    app.locals.user = req.session.currentUser
+    console.log(app.locals)
+    next()
+
+})
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
