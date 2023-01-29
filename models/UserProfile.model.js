@@ -12,7 +12,7 @@ const userProfileSchema = new Schema(
       // required: true,
     },
     surfLevel: {
-      type: String,
+      type: [String],
       required: true,
       enum: ["Beginner", "Intermediate", "Advanced"],
     },

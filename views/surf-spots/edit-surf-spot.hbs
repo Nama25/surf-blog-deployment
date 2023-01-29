@@ -1,0 +1,105 @@
+<h1>Edit {{result.beachName}}</h1>
+
+    {{#if userInSession}}
+    <h2>Hey, {{userInSession.username}}!</h2>
+    <p>Update your surf spot</p>
+    {{!-- {{else}} --}}
+
+    {{! <br /> }}
+    {{! <p>Still no logged in user, sorry!</p> }}
+    {{/if}}
+
+
+
+
+<form action="/profile/edit/{{result._id}}" method="post">
+
+    <label for="">
+        Upload image of surf spot
+        <input name="spotImage" type="text" value="">
+    </label>
+
+    <label for="">
+        Name of the beach:
+        <input name="beachName" type="text" value="{{result.beachName}}" />
+    </label>
+
+    <label for="">
+        Country:
+        <select name="country">
+            {{#each chooseCountry}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </label>
+
+    <label for="">
+        Google Map Link:
+        <input type="text" name="mapLink" value="{{result.mapLink}}"/>
+    </label>
+
+    <label>
+        Surf Level:
+        <select name="skillLevel">
+            {{#each surfingLevel}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </label>
+
+    <label for="">
+        Surf Spot Description:
+        <textarea name="spotDescription" placeholder="Provide a brief description of your experience at this spot" id=""
+            cols="30" rows="10">{{result.spotDescription}}</textarea>
+    </label>
+
+    <label for="">
+        Accessibility:
+        <textarea name="accessibility"
+            placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark." id="" cols="30"
+            rows="10">{{result.accessibility}}</textarea>
+    </label>
+
+
+    <label for="">
+        Amenities:
+        <select name="amenities" multiple>
+            {{#each facilities}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+
+        </select>
+    </label>
+
+    <label for="">
+        Food:
+        <select name="foodSpots" multiple>
+            {{#each foodOptions}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+
+        </select>
+    </label>
+
+    <label for="">
+        Rating:
+        <select name="rating">
+            {{#each ratingScore}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+
+        </select>
+    </label>
+
+    <label>
+        Type of Surfing:
+        <select name="typeOfSurfing" multiple>
+            {{#each surfingType}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </label>
+
+    <button type="submit">Save changes</button>
+
+</form>

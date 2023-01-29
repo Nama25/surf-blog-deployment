@@ -1,6 +1,104 @@
-<h1>Create user profile</h1>
+<h1>Create surf spot</h1>
 
- <label>
-    Rating:
-    <input type="number" name="rating" min="1" max="5" />
+<label>
+  {{#if userInSession}}
+    <h2>Hey, {{userInSession.username}}!</h2>
+    <p>let's surf - tell us your favorite spot</p>
+    {{!-- {{else}} --}}
+
+    {{! <br /> }}
+    {{! <p>Still no logged in user, sorry!</p> }}
+  {{/if}}
+</label>
+
+
+
+<form action="/create" method="post">
+
+  <label for="">
+    Upload image of surf spot
+    <input name="spotImage" type="text">
   </label>
+
+  <label for="">
+    Name of the beach:
+    <input name="beachName" type="text" />
+  </label>
+
+  <label for="">
+    Country:
+    <select name="country">
+      {{#each chooseCountry}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label for="">
+    Google Map Link:
+    <input type="text" name="mapLink" />
+  </label>
+
+  <label>
+    Surf Level:
+    <select name="skillLevel">
+      {{#each surfingLevel}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label for="">
+    Surf Spot Description:
+    <textarea name="spotDescription" placeholder="Provide a brief description of your experience at this spot" id="" cols="30" rows="10"></textarea>
+  </label>
+
+  <label for="">
+    Accessibility:
+    <textarea name="accessibility" placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark." id="" cols="30" rows="10"></textarea>
+  </label>
+
+
+  <label for="">
+    Amenities:
+    <select name="amenities" multiple>
+        {{#each facilities}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+
+    </select>
+  </label>
+
+    <label for="">
+    Food:
+    <select name="foodSpots" multiple>
+        {{#each foodOptions}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+
+    </select>
+  </label>
+
+     <label for="">
+    Rating:
+    <select name="rating">
+        {{#each ratingScore}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+
+    </select>
+  </label>
+
+    <label>
+    Type of Surfing:
+    <select name="typeOfSurfing" multiple>
+      {{#each surfingType}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <button type="submit">Create Spot</button>
+
+</form>
+

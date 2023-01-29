@@ -1,0 +1,50 @@
+<h1>Surf spot profile</h1>
+
+{{!-- Image of beach --}}
+{{!-- <img src="" alt=""> --}}
+
+    <p>
+        Name of the beach: {{result.beachName}}
+    </p>
+
+    <p>
+        Country: {{result.country}}
+    </p>
+
+    <p>
+        Google Map Link: {{result.mapLink}}
+    </p>
+
+    <p>
+        Surf Level: {{result.skillLevel}}
+    </p>
+
+    <p>
+        Surf Spot Description: {{result.spotDescription}}
+    </p>
+
+    <p>
+        Accessibility: {{result.accessibility}}
+    </p>
+
+    <p>
+        Amenities: {{result.amenities}}
+    </p>
+
+    <p>
+        Food: {{result.foodSpots}}
+    </p>
+
+    <p>
+        Rating: {{result.rating}}
+    </p>
+
+    <p>Type of Surfing: {{result.typeOfSurfing}}</p>
+
+    <p>{{result.createdAt}}</p>
+    <p>{{result.updatedAt}}</p>
+
+    <p>Surfer: {{user.username}}</p>
+
+<a href="/profile/edit/{{result._id}}">Edit</a>
+
