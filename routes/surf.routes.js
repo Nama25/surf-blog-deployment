@@ -11,7 +11,11 @@ const {
 // ALL SURF SPOTS ROUTES
 // GET ROUTE
 router.get("/all", (req, res) => {
-  res.render("surf-spots/all-surf-spots");
+  SurfSpot.find()
+    .then((allResults) => {
+      res.render("surf-spots/all-surf-spots", { allResults });
+    })
+    .catch((error) => console.log("Error retrieving all surf spots:", error));
 });
 
 // CREATE SURF SPOTS ROUTES
@@ -130,37 +134,40 @@ router.get(
 
 //POST route ->> do we have to use next here? why?
 router.post("/profile/edit/:surfSpotId", (req, res) => {
-    const { surfSpotId} = req.params;
-    const {
-        spotImage,
-        beachName,
-        country,
-        mapLink,
-        skillLevel,
-        spotDescription,
-        accessibility,
-        amenities,
-        foodSpots,
-        rating,
-        typeOfSurfing,
-    } = req.body
-    SurfSpot.findByIdAndUpdate(surfSpotId, {
-        spotImage,
-        beachName,
-        country,
-        mapLink,
-        skillLevel,
-        spotDescription,
-        accessibility,
-        amenities,
-        foodSpots,
-        rating,
-        typeOfSurfing,}, {new: true})
-    .then(updatedResult =>  res.redirect(`/profile/${updatedResult.id}`))
-    .catch(err => console.log(err))
+  const { surfSpotId } = req.params;
+  const {
+    spotImage,
+    beachName,
+    country,
+    mapLink,
+    skillLevel,
+    spotDescription,
+    accessibility,
+    amenities,
+    foodSpots,
+    rating,
+    typeOfSurfing,
+  } = req.body;
 
-    })
-
-
+  SurfSpot.findByIdAndUpdate(
+    surfSpotId,
+    {
+      spotImage,
+      beachName,
+      country,
+      mapLink,
+      skillLevel,
+      spotDescription,
+      accessibility,
+      amenities,
+      foodSpots,
+      rating,
+      typeOfSurfing,
+    },
+    { new: true }
+  )
+    .then((updatedResult) => res.redirect(`/profile/${updatedResult.id}`))
+    .catch((err) => console.log(err));
+});
 
 module.exports = router;

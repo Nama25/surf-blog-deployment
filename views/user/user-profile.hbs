@@ -10,5 +10,8 @@
 <p>Surf Level: {{result.surfLevel}}</p>
 <p>Type of Surfing: {{result.typeOfSurfing}}</p>
 <p>Favorite Spots: {{result.favoriteSpots}}</p>
-<p>Created: {{result.createdAt}}</p>
+<p>{{result.createdAt}}</p>
+<p>{{result.updatedAt}}</p>
 
+{{!-- change to edit icon --}}
+<a href="/user-profile/edit/{{result._id}}">Edit Profile</a>

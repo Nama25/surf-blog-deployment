@@ -1,0 +1,26 @@
+<h1>All Surf Spots</h1>
+
+<div id="allSurfSpots">
+
+  {{! Image of beach }}
+  {{! <img src="" alt=""> }}
+{{#each allResults}}
+<hr>
+  <p>
+    Name of the beach:
+    {{beachName}}
+  </p>
+
+  <p>
+    Country:
+    {{country}}
+  </p>
+
+  <p>
+    Surf Level:
+    {{skillLevel}}
+  </p>
+  <hr>
+  {{/each}}
+
+</div>
