@@ -128,6 +128,39 @@ router.get(
   }
 );
 
-router.post("/profile/:surfSpotId", (req, res) => {});
+//POST route ->> do we have to use next here? why?
+router.post("/profile/edit/:surfSpotId", (req, res) => {
+    const { surfSpotId} = req.params;
+    const {
+        spotImage,
+        beachName,
+        country,
+        mapLink,
+        skillLevel,
+        spotDescription,
+        accessibility,
+        amenities,
+        foodSpots,
+        rating,
+        typeOfSurfing,
+    } = req.body
+    SurfSpot.findByIdAndUpdate(surfSpotId, {
+        spotImage,
+        beachName,
+        country,
+        mapLink,
+        skillLevel,
+        spotDescription,
+        accessibility,
+        amenities,
+        foodSpots,
+        rating,
+        typeOfSurfing,}, {new: true})
+    .then(updatedResult =>  res.redirect(`/profile/${updatedResult.id}`))
+    .catch(err => console.log(err))
+
+    })
+
+
 
 module.exports = router;
