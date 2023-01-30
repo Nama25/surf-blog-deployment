@@ -20,7 +20,14 @@
     Surf Level:
     {{skillLevel}}
   </p>
+
+  <a href="/profile/edit/{{_id}}">Edit</a>
+  
+  <form action="/all/delete/{{_id}}" method="POST">
+    <button>Delete</button>
+  </form>
   <hr>
+  
   {{/each}}
 
 </div>
