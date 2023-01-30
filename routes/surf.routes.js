@@ -170,4 +170,25 @@ router.post("/profile/edit/:surfSpotId", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+// DELETE surf-spot profile
+// POST route
+
+router.post("/profile/delete/:deleteSpotId", (req, res) => {
+  const { deleteSpotId } = req.params;
+
+  SurfSpot.findByIdAndDelete(deleteSpotId)
+    .then(() => res.redirect("/all"))
+    .catch((err) => console.log("Error in deleting a surf-spot profile:", err));
+});
+
+// DELETE from all-surf-spots
+// POST route
+router.post("/all/delete/:deleteSpotId", (req, res) => {
+  const { deleteSpotId } = req.params;
+
+  SurfSpot.findByIdAndDelete(deleteSpotId)
+    .then(() => res.redirect("/all"))
+    .catch((err) => console.log("Error in deleting a surf-spot profile:", err));
+});
+
 module.exports = router;
