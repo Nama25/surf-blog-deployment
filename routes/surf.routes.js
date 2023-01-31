@@ -66,6 +66,19 @@ router.post("/create", (req, res) => {
     typeOfSurfing,
   } = req.body;
 
+  if (!spotImage || !beachName || !country || !mapLink ||!skillLevel || !spotDescription ||!accessibility || !amenities || !foodSpots || !typeOfSurfing) {
+    res.render("surf-spots/create-surf-spot", { chooseCountry,
+        surfingLevel,
+        facilities,
+        foodOptions,
+        ratingScore,
+        surfingType,
+        userInSession: req.session.currentUser,
+        errorMessage: "Fields with * are mandatory."
+    })
+    return 
+  }
+
   SurfSpot.create({
     spotImage: spotImage,
     beachName: beachName,
