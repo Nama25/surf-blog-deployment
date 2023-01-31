@@ -1,15 +1,14 @@
 const router = require("express").Router();
-const UserProfile = require("../models/UserProfile.model");
-// const User = require("../models/User.model");
 const mongoose = require("mongoose");
 const { isLoggedIn, isLoggedOut } = require("../middleware/middleware.js");
+const User = require("../models/User.model");
 
 // USER PROFILE ROUTES
 // GET route
 router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
   console.log("req.params?", req.params.usernameId);
-  UserProfile.findById(req.params.usernameId)
-    //   UserProfile.findOne({username: req.params.usernameId}) -> username for URL
+  User.findById(req.params.usernameId)
+    //   User.findOne({username: req.params.usernameId}) -> username for URL
     .then((result) => {
       res.render("user/user-profile", {
         result,
@@ -37,8 +36,17 @@ router.post("/create-profile", (req, res) => {
   console.log(req.body);
 
   const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
+  // Add Profile image field
+  if (!surfLevel || !typeOfSurfing) {
+    res.render("user/create-user-profile", {
+      surfingLevel,
+      surfingType,
+      userInSession: req.session.currentUser,
+      errorMessage: "Fields with * are mandatory.",
+    });
+  }
 
-  UserProfile.create({
+  User.create({
     profileImage: profileImage,
     surfLevel: surfLevel,
     typeOfSurfing: typeOfSurfing,
@@ -58,7 +66,7 @@ router.post("/create-profile", (req, res) => {
 router.get("/profile/edit/:usernameId", isLoggedIn, (req, res) => {
   const { usernameId } = req.params;
 
-  UserProfile.findById(usernameId)
+  User.findById(usernameId)
     .then((result) => {
       console.log(result);
       res.render("user/edit-user-profile", {
@@ -79,7 +87,7 @@ router.post("/profile/edit/:usernameId", (req, res) => {
   const { usernameId } = req.params;
   const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
 
-  UserProfile.findByIdAndUpdate(
+  User.findByIdAndUpdate(
     usernameId,
     {
       profileImage,

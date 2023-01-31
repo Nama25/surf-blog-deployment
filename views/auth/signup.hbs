@@ -19,5 +19,9 @@
 
         <button type="submit">Create surfer account</button>
 
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+
     </form>
 </div>
