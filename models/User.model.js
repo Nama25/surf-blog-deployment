@@ -20,6 +20,11 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Password is required"],
   },
+  userProfile: {
+    type: Schema.Types.ObjectId,
+      ref: "UserProfile",
+      unique: true
+  }
 });
 
 const User = model("User", userSchema);

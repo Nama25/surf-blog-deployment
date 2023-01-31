@@ -9,6 +9,7 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/middleware.js");
 router.get("/user-profile/:usernameId", isLoggedIn, (req, res) => {
   console.log("req.params?", req.params.usernameId);
   UserProfile.findById(req.params.usernameId)
+//   UserProfile.findOne({username: req.params.usernameId}) -> username for URL
     .then((result) => {
       res.render("user/user-profile", {
         result,
@@ -42,10 +43,12 @@ router.post("/create-user-profile", (req, res) => {
     surfLevel: surfLevel,
     typeOfSurfing: typeOfSurfing,
     favoriteSpots: favoriteSpots,
+    // username: req.session.currentUser._id  -> username in URL
   })
     .then((result) => {
       console.log(result);
       res.redirect(`/user-profile/${result._id}`);
+    //   res.redirect(`/user-profile/${result.username}`); -> username in URL
     })
     .catch((err) => console.log(err));
 });

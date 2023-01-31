@@ -6,6 +6,7 @@ const userProfileSchema = new Schema(
     username: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      unique: [true, "already user-profile created"]
     },
     profileImage: {
       type: String,

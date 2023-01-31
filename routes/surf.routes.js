@@ -52,7 +52,6 @@ router.get("/create", isLoggedIn, (req, res) => {
 
 //POST route
 router.post("/create", (req, res) => {
-  console.log(req.body);
 
   const {
     spotImage,
@@ -83,7 +82,7 @@ router.post("/create", (req, res) => {
   })
     .then((result) => {
       console.log(result);
-      res.redirect(`/profile/${result._id}`);
+      res.redirect(`/surf-spot/profile/${result._id}`);
     })
     .catch((err) => console.log(err));
 });
