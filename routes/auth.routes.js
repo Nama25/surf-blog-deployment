@@ -22,9 +22,6 @@ router.get("/login", (req, res) => {
 
 // POST route
 router.post("/login", (req, res) => {
-  console.log("YOu have been Logged in!!");
-  console.log("SESSION =====> ", req.session);
-  console.log(req.body);
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -33,6 +30,7 @@ router.post("/login", (req, res) => {
     });
     return;
   }
+
   User.findOne({ email })
     .then((user) => {
       console.log(user);
@@ -60,6 +58,26 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post("/signup", isLoggedOut, (req, res, next) => {
   console.log(req.body);
   const { username, email, password } = req.body;
+
+  // Mandatory fields
+  if (!username || !email || !password) {
+    res.render("auth/signup", {
+      errorMessage:
+        "All fields are mandatory. Please provide username, email and password.",
+    });
+    return;
+  }
+
+  // strong password
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!regex.test(password)) {
+    res.status(500).render("auth/signup", {
+      errorMessage:
+        "Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.",
+    });
+    return;
+  }
+
   bcrypt
     .genSalt(saltRounds)
     // .then((salt) => bcrypt.hash(password, salt))
@@ -74,12 +92,22 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
         passwordHash: hashedPassword,
       })
         .then((result) => {
-          console.log("New user created:", result);
           req.session.currentUser = result;
-          res.redirect("/create-user-profile");
+          res.redirect("/user/create-profile");
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          if (error instanceof mongoose.Error.ValidationError) {
+            res
+              .status(500)
+              .render("auth/signup", { errorMessage: error.message });
+          } else if (error.code === 11000) {
+            res.status(500).render("auth/signup", {
+              errorMessage:
+                "Username and email need to be unique. Either username or email is already in use.",
+            });
+          } else {
+            next(error);
+          }
         });
     });
 });

@@ -1,17 +1,16 @@
-
 {{#if result.surfLevel}}
-  <h2>Hi {{ user.username }}!</h2>
-  <p>This is your profile page my friend!</p>
+  <h2>Hi {{user.username}}!</h2>
+  <p>This is your profile page!</p>
 {{else}}
-  <br><p>Still no logged in user, sorry!</p>
- 
+  <br /><p>Still no logged in user, sorry!</p>
+
 {{/if}}
-<img src="" alt="">
+<img src="" alt="" />
 <p>Surf Level: {{result.surfLevel}}</p>
 <p>Type of Surfing: {{result.typeOfSurfing}}</p>
 <p>Favorite Spots: {{result.favoriteSpots}}</p>
 <p>{{result.createdAt}}</p>
 <p>{{result.updatedAt}}</p>
 
-{{!-- change to edit icon --}}
-<a href="/user-profile/edit/{{result._id}}">Edit Profile</a>
+{{! change to edit icon }}
+<a href="/user/profile/edit/{{result._id}}"><i class="fa-solid fa-pen-to-square icons"></i></a>

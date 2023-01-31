@@ -1,6 +1,6 @@
 <h1>Create User Profile</h1>
 
-<form action="/create-user-profile" method="POST">
+<form action="/user/create-profile" method="POST">
 
   <label>
     {{#if userInSession}}
@@ -13,12 +13,13 @@
     {{/if}}
   </label>
 
+{{!-- Add upload image field --}}
   <label for="">
-    Image:
+    Image*:
   </label>
 
   <label>
-    Surf Level:
+    Surf Level*:
     {{! <input type="text" name="author" /> }}
     {{!   select / name = Model Name
     each = vairable name from routes }}
@@ -31,7 +32,7 @@
   </label>
 
   <label>
-    Type of Surfing:
+    Type of Surfing*:
     <select name="typeOfSurfing" multiple>
       {{#each surfingType}}
         <option value="{{this}}">{{this}}</option>
@@ -45,4 +46,7 @@
   </label>
 
   <button type="submit"> Create </button>
+  {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+  {{/if}}
 </form>

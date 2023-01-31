@@ -52,8 +52,6 @@ router.get("/create", isLoggedIn, (req, res) => {
 
 //POST route
 router.post("/create", (req, res) => {
-  console.log(req.body);
-
   const {
     spotImage,
     beachName,
@@ -67,6 +65,19 @@ router.post("/create", (req, res) => {
     rating,
     typeOfSurfing,
   } = req.body;
+
+  if (!spotImage || !beachName || !country || !mapLink ||!skillLevel || !spotDescription ||!accessibility || !amenities || !foodSpots || !typeOfSurfing) {
+    res.render("surf-spots/create-surf-spot", { chooseCountry,
+        surfingLevel,
+        facilities,
+        foodOptions,
+        ratingScore,
+        surfingType,
+        userInSession: req.session.currentUser,
+        errorMessage: "Fields with * are mandatory."
+    })
+    return 
+  }
 
   SurfSpot.create({
     spotImage: spotImage,
@@ -83,7 +94,7 @@ router.post("/create", (req, res) => {
   })
     .then((result) => {
       console.log(result);
-      res.redirect(`/profile/${result._id}`);
+      res.redirect(`/surf-spot/profile/${result._id}`);
     })
     .catch((err) => console.log(err));
 });
@@ -124,7 +135,7 @@ router.get(
         });
       })
       .then(() => {
-        res.redirect(`/profile/${result._id}`);
+        res.redirect(`/surf-spot/profile/${result._id}`);
       })
       .catch((error) => {
         "Edit Surf Spot Error:", error;
@@ -166,7 +177,9 @@ router.post("/profile/edit/:surfSpotId", (req, res) => {
     },
     { new: true }
   )
-    .then((updatedResult) => res.redirect(`/profile/${updatedResult.id}`))
+    .then((updatedResult) =>
+      res.redirect(`/surf-spot/profile/${updatedResult.id}`)
+    )
     .catch((err) => console.log(err));
 });
 
@@ -177,7 +190,7 @@ router.post("/profile/delete/:deleteSpotId", (req, res) => {
   const { deleteSpotId } = req.params;
 
   SurfSpot.findByIdAndDelete(deleteSpotId)
-    .then(() => res.redirect("/all"))
+    .then(() => res.redirect("/surf-spot/all"))
     .catch((err) => console.log("Error in deleting a surf-spot profile:", err));
 });
 
@@ -187,7 +200,7 @@ router.post("/all/delete/:deleteSpotId", (req, res) => {
   const { deleteSpotId } = req.params;
 
   SurfSpot.findByIdAndDelete(deleteSpotId)
-    .then(() => res.redirect("/all"))
+    .then(() => res.redirect("/surf-spot/all"))
     .catch((err) => console.log("Error in deleting a surf-spot profile:", err));
 });
 

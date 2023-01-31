@@ -8,6 +8,7 @@ const surfSpotSchema = new Schema(
     beachName: {
       type: String,
       required: true,
+      unique: true
     },
     country: {
       type: String,

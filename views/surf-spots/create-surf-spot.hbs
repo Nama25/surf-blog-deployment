@@ -11,13 +11,11 @@
   {{/if}}
 </label>
 
-
-
-<form action="/create" method="post">
+<form action="/surf-spot/create" method="post">
 
   <label for="">
     Upload image of surf spot
-    <input name="spotImage" type="text">
+    <input name="spotImage" type="text" />
   </label>
 
   <label for="">
@@ -28,6 +26,7 @@
   <label for="">
     Country:
     <select name="country">
+      <option value="" disabled selected>Select a country</option>
       {{#each chooseCountry}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
@@ -42,6 +41,7 @@
   <label>
     Surf Level:
     <select name="skillLevel">
+      <option value="" disabled selected>Select surfing level</option>
       {{#each surfingLevel}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
@@ -50,46 +50,57 @@
 
   <label for="">
     Surf Spot Description:
-    <textarea name="spotDescription" placeholder="Provide a brief description of your experience at this spot" id="" cols="30" rows="10"></textarea>
+    <textarea
+      name="spotDescription"
+      placeholder="Provide a brief description of your experience at this spot"
+      id=""
+      cols="30"
+      rows="10"
+    ></textarea>
   </label>
 
   <label for="">
     Accessibility:
-    <textarea name="accessibility" placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark." id="" cols="30" rows="10"></textarea>
+    <textarea
+      name="accessibility"
+      placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark."
+      id=""
+      cols="30"
+      rows="10"
+    ></textarea>
   </label>
-
 
   <label for="">
     Amenities:
     <select name="amenities" multiple>
-        {{#each facilities}}
+      {{#each facilities}}
         <option value="{{this}}">{{this}}</option>
-        {{/each}}
+      {{/each}}
 
     </select>
   </label>
 
-    <label for="">
+  <label for="">
     Food:
     <select name="foodSpots" multiple>
-        {{#each foodOptions}}
+      {{#each foodOptions}}
         <option value="{{this}}">{{this}}</option>
-        {{/each}}
+      {{/each}}
 
     </select>
   </label>
 
-     <label for="">
+  <label for="">
     Rating:
     <select name="rating">
-        {{#each ratingScore}}
+      {{#each ratingScore}}
         <option value="{{this}}">{{this}}</option>
-        {{/each}}
+      {{/each}}
 
     </select>
   </label>
 
-    <label>
+  <label>
     Type of Surfing:
     <select name="typeOfSurfing" multiple>
       {{#each surfingType}}
@@ -100,5 +111,8 @@
 
   <button type="submit">Create Spot</button>
 
-</form>
+  {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
 
+</form>
