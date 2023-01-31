@@ -6,10 +6,10 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/middleware.js");
 
 // USER PROFILE ROUTES
 // GET route
-router.get("/user-profile/:usernameId", isLoggedIn, (req, res) => {
+router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
   console.log("req.params?", req.params.usernameId);
   UserProfile.findById(req.params.usernameId)
-//   UserProfile.findOne({username: req.params.usernameId}) -> username for URL
+    //   UserProfile.findOne({username: req.params.usernameId}) -> username for URL
     .then((result) => {
       res.render("user/user-profile", {
         result,
@@ -24,7 +24,7 @@ router.get("/user-profile/:usernameId", isLoggedIn, (req, res) => {
 const surfingLevel = ["Beginner", "Intermediate", "Advanced"];
 const surfingType = ["Surfing", "Body Surfing", "Body Boarding"];
 // Do we have to add Middleware??????
-router.get("/create-user-profile", isLoggedIn, (req, res) => {
+router.get("/create-profile", isLoggedIn, (req, res) => {
   res.render("user/create-user-profile", {
     surfingLevel,
     surfingType,
@@ -33,7 +33,7 @@ router.get("/create-user-profile", isLoggedIn, (req, res) => {
 });
 
 //POST route
-router.post("/create-user-profile", (req, res) => {
+router.post("/create-profile", (req, res) => {
   console.log(req.body);
 
   const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
@@ -47,15 +47,15 @@ router.post("/create-user-profile", (req, res) => {
   })
     .then((result) => {
       console.log(result);
-      res.redirect(`/user-profile/${result._id}`);
-    //   res.redirect(`/user-profile/${result.username}`); -> username in URL
+      res.redirect(`/user/profile/${result._id}`);
+      //   res.redirect(`/user-profile/${result.username}`); -> username in URL
     })
     .catch((err) => console.log(err));
 });
 
 // EDIT USER PROFILE route
 // GET route
-router.get("/user-profile/edit/:usernameId", isLoggedIn, (req, res) => {
+router.get("/profile/edit/:usernameId", isLoggedIn, (req, res) => {
   const { usernameId } = req.params;
 
   UserProfile.findById(usernameId)
@@ -69,13 +69,13 @@ router.get("/user-profile/edit/:usernameId", isLoggedIn, (req, res) => {
       });
     })
     .then(() => {
-      res.redirect(`/user-profile/${result._id}`);
+      res.redirect(`/user/profile/${result._id}`);
     })
     .catch((error) => console.log("Error updating user profile", error));
 });
 
 // POST route
-router.post("/user-profile/edit/:usernameId", (req, res) => {
+router.post("/profile/edit/:usernameId", (req, res) => {
   const { usernameId } = req.params;
   const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
 
@@ -89,7 +89,7 @@ router.post("/user-profile/edit/:usernameId", (req, res) => {
     },
     { new: true }
   )
-    .then((updatedResult) => res.redirect(`/user-profile/${updatedResult.id}`))
+    .then((updatedResult) => res.redirect(`/user/profile/${updatedResult.id}`))
     .catch((error) => console.log("Error updating your profile:", error));
 });
 
