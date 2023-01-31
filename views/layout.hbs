@@ -10,28 +10,38 @@
 
   <body>
 
+    <div>
+      <nav id="nav-bar">
+        <ul>
+              <a href="/" title="Home"><img src="images/surfs-up-logo.webp" alt=""></a>
+              {{#if user}}
+              <a href="/all">All Surf Spots</a>
+              <a href="/create">Create a Surf Spot</a>
+              <form id="logout-form" action="/logout" method="POST">
+                <button>Logout</button>
+              </form>
+              {{else}}
+            
+                <button><a href="/signup">Sign Up</a></button>
+             
 
+                <button><a href="/login">Login</a></button>
+      
+              
+              {{/if}}
+              </div>
+        </ul>
+      </nav>
+    
 
-    {{#if user}}
-   <form id="logout-form" action="/logout" method="POST">
-      <button>Logout</button>
-   </form>
-    {{else}}
-      <div>
-        <button><a href="/signup">Sign Up</a></button>
-      </div>
-
-      <div>
-        <button><a href="/login">Login</a></button>
-      </div>
-
-    {{/if}}
-
-      {{{body}}}
+    {{{body}}}
 
     <script src="/js/script.js"></script>
-    
-      
+    {{! Font Awesome }}
+    <script
+      src="https://kit.fontawesome.com/111a422a9a.js"
+      crossorigin="anonymous"
+    ></script>
 
   </body>
 

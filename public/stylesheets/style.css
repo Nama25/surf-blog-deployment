@@ -10,3 +10,24 @@ a {
 h1 {
   color: 15px;
 }
+
+/* Edit and Delete icons / buttons */
+.icons {
+  background-color: white;
+  border: none;
+  color: rgb(26, 129, 170);
+  padding: 5px 5px;
+  margin: 5px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.icons:hover {
+ color: white;
+ background-color: rgb(88, 181, 218);
+}
+
+#nav-bar {
+  border: 2px solid black;
+
+}

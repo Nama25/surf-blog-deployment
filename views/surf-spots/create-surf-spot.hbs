@@ -28,6 +28,7 @@
   <label for="">
     Country:
     <select name="country">
+      <option value="" disabled selected>Select a country</option>
       {{#each chooseCountry}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
@@ -42,6 +43,7 @@
   <label>
     Surf Level:
     <select name="skillLevel">
+      <option value="" disabled selected>Select surfing level</option>
       {{#each surfingLevel}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
