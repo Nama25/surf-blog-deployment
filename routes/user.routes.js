@@ -2,11 +2,12 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const { isLoggedIn, isLoggedOut } = require("../middleware/middleware.js");
 const User = require("../models/User.model");
+const fileUploader = require("../config/cloudinary.config");
 
 // USER PROFILE ROUTES
 // GET route
 router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
-  console.log("req.params?", req.params.usernameId);
+  // console.log("req.params?", req.params.usernameId);
   User.findById(req.params.usernameId)
     //   User.findOne({username: req.params.usernameId}) -> username for URL
     .then((result) => {
@@ -32,10 +33,12 @@ router.get("/create-profile", isLoggedIn, (req, res) => {
 });
 
 //POST route
-router.post("/create-profile", (req, res) => {
+router.post("/create-profile", fileUploader.single("userImage"), (req, res) => {
   console.log(req.body);
 
   const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
+  console.log("REQ FILE", req.file);
+  console.log("REQ PATH", req.file.path);
   // Add Profile image field
   if (!surfLevel || !typeOfSurfing) {
     res.render("user/create-user-profile", {
@@ -46,15 +49,16 @@ router.post("/create-profile", (req, res) => {
     });
   }
 
-  User.create({
-    profileImage: profileImage,
+  User.findByIdAndUpdate(req.session.currentUser._id, {
+    // profileImage: profileImage,
     surfLevel: surfLevel,
     typeOfSurfing: typeOfSurfing,
     favoriteSpots: favoriteSpots,
+    imageUrl: req.file.path,
     // username: req.session.currentUser._id  -> username in URL
   })
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.redirect(`/user/profile/${result._id}`);
       //   res.redirect(`/user-profile/${result.username}`); -> username in URL
     })

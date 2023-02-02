@@ -1,14 +1,16 @@
 const { Schema, model } = require("mongoose");
 const surfSpotSchema = new Schema(
   {
-    spotImage: {
-      type: String,
-      // required: true,
-    },
+    // spotImage: {
+    //   type: String,
+    //   imageUrl: String,
+    //   // required: true,
+    // },
+    imageUrl: String,
     beachName: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     country: {
       type: String,
