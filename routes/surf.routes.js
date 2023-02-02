@@ -54,8 +54,7 @@ router.get("/create", isLoggedIn, (req, res) => {
 //POST route
 router.post("/create", fileUploader.single("beachImage"), (req, res) => {
   const {
-    // spotImage,
-    // imageUrl,
+    imageUrl,
     beachName,
     country,
     mapLink,
@@ -68,11 +67,10 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
     typeOfSurfing,
   } = req.body;
   console.log("REQ FILE", req.file);
-  console.log("REQ PATH", req.file.path);
+ 
 
   if (
-    // !spotImage ||
-    // !imageUrl ||
+    !imageUrl ||
     !beachName ||
     !country ||
     !mapLink ||
@@ -164,7 +162,7 @@ router.get(
 router.post("/profile/edit/:surfSpotId", (req, res) => {
   const { surfSpotId } = req.params;
   const {
-    spotImage,
+    // spotImage,
     beachName,
     country,
     mapLink,
