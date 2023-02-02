@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const SurfSpot = require("../models/SurfSpot.model");
 const mongoose = require("mongoose");
+const User = require("../models/User.model");
 const {
   isLoggedIn,
   isLoggedOut,
@@ -13,6 +14,7 @@ const fileUploader = require("../config/cloudinary.config");
 // GET ROUTE
 router.get("/all", (req, res) => {
   SurfSpot.find()
+    // .populate("user")
     .then((allResults) => {
       res.render("surf-spots/all-surf-spots", { allResults });
     })
@@ -53,8 +55,14 @@ router.get("/create", isLoggedIn, (req, res) => {
 
 //POST route
 router.post("/create", fileUploader.single("beachImage"), (req, res) => {
+
+  let mainUser;
+  User.findById(req.session.currentUser._id)
+  .then(userObj=>{
+    mainUser  =userObj
+  })
   const {
-    imageUrl,
+    // imageUrl,
     beachName,
     country,
     mapLink,
@@ -70,7 +78,7 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
  
 
   if (
-    !imageUrl ||
+    // !imageUrl ||
     !beachName ||
     !country ||
     !mapLink ||
@@ -94,7 +102,8 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
     return;
   }
 
-  SurfSpot.create({
+  return SurfSpot.create({
+
     // spotImage: spotImage,
     beachName: beachName,
     country: country,
@@ -107,8 +116,13 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
     rating: rating,
     typeOfSurfing: typeOfSurfing,
     imageUrl: req.file.path,
+    user:req.session.currentUser._id
   })
     .then((result) => {
+     req.session.currentUser.surfSpot.push(result._id)
+      mainUser.surfSpot.push(result._id)
+      // User.findByIdAndUpdate(req.session.currentUser._id, req.session.currentUser)
+      User.create(mainUser)
       res.redirect(`/surf-spot/profile/${result._id}`);
     })
     .catch((err) => console.log(err));

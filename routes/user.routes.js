@@ -10,6 +10,7 @@ router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
   // console.log("req.params?", req.params.usernameId);
   User.findById(req.params.usernameId)
     //   User.findOne({username: req.params.usernameId}) -> username for URL
+    .populate("surfSpot")
     .then((result) => {
       res.render("user/user-profile", {
         result,
