@@ -36,6 +36,9 @@ const userSchema = new Schema(
       required: true,
       enum: ["Surfing", "Body Surfing", "Body Boarding"],
     },
+    surfSpot: [{ type: Schema.Types.ObjectId, ref: "SurfSpot"}],
+
+    
     favoriteSpots: String,
     imageUrl: String,
     // userProfile: {

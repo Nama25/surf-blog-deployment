@@ -10,6 +10,7 @@ router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
   // console.log("req.params?", req.params.usernameId);
   User.findById(req.params.usernameId)
     //   User.findOne({username: req.params.usernameId}) -> username for URL
+    .populate("surfSpot")
     .then((result) => {
       res.render("user/user-profile", {
         result,
@@ -36,9 +37,9 @@ router.get("/create-profile", isLoggedIn, (req, res) => {
 router.post("/create-profile", fileUploader.single("userImage"), (req, res) => {
   console.log(req.body);
 
-  const { profileImage, surfLevel, typeOfSurfing, favoriteSpots } = req.body;
+  const { surfLevel, typeOfSurfing, favoriteSpots } = req.body;
   console.log("REQ FILE", req.file);
-  console.log("REQ PATH", req.file.path);
+ 
   // Add Profile image field
   if (!surfLevel || !typeOfSurfing) {
     res.render("user/create-user-profile", {
