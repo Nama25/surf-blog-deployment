@@ -7,6 +7,7 @@ const {
   canEdit,
 } = require("../middleware/middleware.js");
 // const User = require("../models/User.model");
+const fileUploader = require("../config/cloudinary.config");
 
 // ALL SURF SPOTS ROUTES
 // GET ROUTE
@@ -51,9 +52,10 @@ router.get("/create", isLoggedIn, (req, res) => {
 });
 
 //POST route
-router.post("/create", (req, res) => {
+router.post("/create", fileUploader.single("beachImage"), (req, res) => {
   const {
-    spotImage,
+    // spotImage,
+    // imageUrl,
     beachName,
     country,
     mapLink,
@@ -65,22 +67,37 @@ router.post("/create", (req, res) => {
     rating,
     typeOfSurfing,
   } = req.body;
+  console.log("REQ FILE", req.file);
+  console.log("REQ PATH", req.file.path);
 
-  if (!spotImage || !beachName || !country || !mapLink ||!skillLevel || !spotDescription ||!accessibility || !amenities || !foodSpots || !typeOfSurfing) {
-    res.render("surf-spots/create-surf-spot", { chooseCountry,
-        surfingLevel,
-        facilities,
-        foodOptions,
-        ratingScore,
-        surfingType,
-        userInSession: req.session.currentUser,
-        errorMessage: "Fields with * are mandatory."
-    })
-    return 
+  if (
+    // !spotImage ||
+    // !imageUrl ||
+    !beachName ||
+    !country ||
+    !mapLink ||
+    !skillLevel ||
+    !spotDescription ||
+    !accessibility ||
+    !amenities ||
+    !foodSpots ||
+    !typeOfSurfing
+  ) {
+    res.render("surf-spots/create-surf-spot", {
+      chooseCountry,
+      surfingLevel,
+      facilities,
+      foodOptions,
+      ratingScore,
+      surfingType,
+      userInSession: req.session.currentUser,
+      errorMessage: "Fields with * are mandatory.",
+    });
+    return;
   }
 
   SurfSpot.create({
-    spotImage: spotImage,
+    // spotImage: spotImage,
     beachName: beachName,
     country: country,
     mapLink: mapLink,
@@ -91,9 +108,9 @@ router.post("/create", (req, res) => {
     foodSpots: foodSpots,
     rating: rating,
     typeOfSurfing: typeOfSurfing,
+    imageUrl: req.file.path,
   })
     .then((result) => {
-      console.log(result);
       res.redirect(`/surf-spot/profile/${result._id}`);
     })
     .catch((err) => console.log(err));

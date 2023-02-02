@@ -21,10 +21,11 @@ const userSchema = new Schema(
       type: String,
       // required: [true, "Password is required"],
     },
-    profileImage: {
-      type: String,
-      // required: true,
-    },
+    // profileImage: {
+    // type: String,
+    // imageUrl: String,
+    // required: true,
+    // },
     surfLevel: {
       type: [String],
       required: true,
@@ -36,6 +37,7 @@ const userSchema = new Schema(
       enum: ["Surfing", "Body Surfing", "Body Boarding"],
     },
     favoriteSpots: String,
+    imageUrl: String,
     // userProfile: {
     //   type: Schema.Types.ObjectId,
     //   ref: "UserProfile",
