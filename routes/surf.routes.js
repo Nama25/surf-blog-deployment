@@ -9,20 +9,7 @@ const {
 } = require("../middleware/middleware.js");
 // const User = require("../models/User.model");
 const fileUploader = require("../config/cloudinary.config");
-
-// ALL SURF SPOTS ROUTES
-// GET ROUTE
-router.get("/all", (req, res) => {
-  SurfSpot.find()
-    // .populate("user")
-    .then((allResults) => {
-      res.render("surf-spots/all-surf-spots", { allResults });
-    })
-    .catch((error) => console.log("Error retrieving all surf spots:", error));
-});
-
-// CREATE SURF SPOTS ROUTES
-// GET route
+// Global variables
 const chooseCountry = [
   "Denmark",
   "France",
@@ -40,6 +27,27 @@ const facilities = ["Showers", "Toilets", "None"];
 const foodOptions = ["Cafe", "Restaurant", "Supermarket", "Bar"];
 const ratingScore = [1, 2, 3, 4, 5];
 const surfingType = ["Surfing", "Body Surfing", "Body Boarding"];
+
+// ALL SURF SPOTS ROUTES
+// GET ROUTE
+router.get("/all", (req, res) => {
+  SurfSpot.find({}, {}, { lean: true })
+    // .populate("user")
+    .then((surfSpots) => {
+      const allResults = surfSpots.map((spot) => {
+        const canEdit = spot.user.toString() === req.session.currentUser._id;
+        return { ...spot, canEdit };
+      });
+      console.log(allResults);
+      res.render("surf-spots/all-surf-spots", {
+        allResults,
+      });
+    })
+    .catch((error) => console.log("Error retrieving all surf spots:", error));
+});
+
+// CREATE SURF SPOTS ROUTES
+// GET route
 
 router.get("/create", isLoggedIn, (req, res) => {
   res.render("surf-spots/create-surf-spot", {
@@ -143,15 +151,36 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
   const { surfSpotId } = req.params;
   SurfSpot.findById(surfSpotId)
     .then((result) => {
-      console.log(result);
+      const countrySelected = chooseCountry.map((countryA) => {
+        const selected = countryA === result.country;
+        const countryObj = {
+          country: countryA,
+          selected,
+        };
+        return countryObj;
+      });
+
+      const skillSelected = surfingLevel.map((skill) => {
+        const chosenSkill = skill === result.skillLevel;
+        const skillObj = {
+          skillLevel: skill,
+          chosenSkill,
+        };
+        return skillObj;
+      });
+
+      // console.log(countrySelected);
       res.render("surf-spots/edit-surf-spot", {
-        chooseCountry,
-        surfingLevel,
+        // spotImage,
+        // chooseCountry,
+        // surfingLevel,
         facilities,
         foodOptions,
         ratingScore,
         surfingType,
         result,
+        countrySelected,
+        skillSelected,
         userInSession: req.session.currentUser,
       });
     })
@@ -164,26 +193,13 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
 });
 
 //POST route ->> do we have to use next here? why?
-router.post("/profile/edit/:surfSpotId", (req, res) => {
-  const { surfSpotId } = req.params;
-  const {
-    // spotImage,
-    beachName,
-    country,
-    mapLink,
-    skillLevel,
-    spotDescription,
-    accessibility,
-    amenities,
-    foodSpots,
-    rating,
-    typeOfSurfing,
-  } = req.body;
-
-  SurfSpot.findByIdAndUpdate(
-    surfSpotId,
-    {
-      spotImage,
+router.post(
+  "/profile/edit/:surfSpotId",
+  fileUploader.single("updatedImage"),
+  (req, res) => {
+    const { surfSpotId } = req.params;
+    const {
+      existingImage,
       beachName,
       country,
       mapLink,
@@ -194,14 +210,38 @@ router.post("/profile/edit/:surfSpotId", (req, res) => {
       foodSpots,
       rating,
       typeOfSurfing,
-    },
-    { new: true }
-  )
-    .then((updatedResult) =>
-      res.redirect(`/surf-spot/profile/${updatedResult.id}`)
+    } = req.body;
+
+    let imageUrl;
+    if (req.file) {
+      imageUrl = req.file.path;
+    } else {
+      imageUrl = existingImage;
+    }
+
+    SurfSpot.findByIdAndUpdate(
+      surfSpotId,
+      {
+        imageUrl,
+        beachName,
+        country,
+        mapLink,
+        skillLevel,
+        spotDescription,
+        accessibility,
+        amenities,
+        foodSpots,
+        rating,
+        typeOfSurfing,
+      },
+      { new: true }
     )
-    .catch((err) => console.log(err));
-});
+      .then((updatedResult) =>
+        res.redirect(`/surf-spot/profile/${updatedResult.id}`)
+      )
+      .catch((error) => console.log("Error while updating Surf spot: ", error));
+  }
+);
 
 // DELETE surf-spot profile
 // POST route

@@ -25,7 +25,7 @@ const canEdit = (req, res, next) => {
     })
     .catch((err) => {
       console.log(err);
-      res.redirect("/");
+      res.redirect("/surf-spot/all");
     });
 };
 
