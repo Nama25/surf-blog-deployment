@@ -6,7 +6,7 @@ const surfSpotSchema = new Schema(
     //   imageUrl: String,
     //   // required: true,
     // },
-    imageUrl: String,
+    imageUrl: [String],
     beachName: {
       type: String,
       required: true,

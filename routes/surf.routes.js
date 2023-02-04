@@ -62,6 +62,8 @@ router.get("/create", isLoggedIn, (req, res) => {
 });
 
 //POST route
+//multiple images: req.files[0].path, loop through the array up to 5 pictures
+// fileUpload.array for multiple pictures
 router.post("/create", fileUploader.single("beachImage"), (req, res) => {
   let mainUser;
   User.findById(req.session.currentUser._id).then((userObj) => {
