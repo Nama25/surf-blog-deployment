@@ -55,12 +55,10 @@ router.get("/create", isLoggedIn, (req, res) => {
 
 //POST route
 router.post("/create", fileUploader.single("beachImage"), (req, res) => {
-
   let mainUser;
-  User.findById(req.session.currentUser._id)
-  .then(userObj=>{
-    mainUser  =userObj
-  })
+  User.findById(req.session.currentUser._id).then((userObj) => {
+    mainUser = userObj;
+  });
   const {
     // imageUrl,
     beachName,
@@ -75,7 +73,6 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
     typeOfSurfing,
   } = req.body;
   console.log("REQ FILE", req.file);
- 
 
   if (
     // !imageUrl ||
@@ -103,7 +100,6 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
   }
 
   return SurfSpot.create({
-
     // spotImage: spotImage,
     beachName: beachName,
     country: country,
@@ -116,13 +112,13 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
     rating: rating,
     typeOfSurfing: typeOfSurfing,
     imageUrl: req.file.path,
-    user:req.session.currentUser._id
+    user: req.session.currentUser._id,
   })
     .then((result) => {
-     req.session.currentUser.surfSpot.push(result._id)
-      mainUser.surfSpot.push(result._id)
+      req.session.currentUser.surfSpot.push(result._id);
+      mainUser.surfSpot.push(result._id);
       // User.findByIdAndUpdate(req.session.currentUser._id, req.session.currentUser)
-      User.create(mainUser)
+      User.create(mainUser);
       res.redirect(`/surf-spot/profile/${result._id}`);
     })
     .catch((err) => console.log(err));
@@ -130,7 +126,7 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
 
 // SURF SPOT PROFILE ROUTES
 // GET route
-router.get("/profile/:surfSpotId", isLoggedIn, (req, res) => {
+router.get("/profile/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
   SurfSpot.findById(req.params.surfSpotId)
     .then((result) => {
       res.render("surf-spots/surf-spot-profile", {
@@ -143,34 +139,29 @@ router.get("/profile/:surfSpotId", isLoggedIn, (req, res) => {
 
 // EDIT SURF SPOT PROFILE ROUTES
 // GET route
-router.get(
-  "/profile/edit/:surfSpotId",
-  isLoggedIn,
-  // canEdit,
-  (req, res) => {
-    const { surfSpotId } = req.params;
-    SurfSpot.findById(surfSpotId)
-      .then((result) => {
-        console.log(result);
-        res.render("surf-spots/edit-surf-spot", {
-          chooseCountry,
-          surfingLevel,
-          facilities,
-          foodOptions,
-          ratingScore,
-          surfingType,
-          result,
-          userInSession: req.session.currentUser,
-        });
-      })
-      .then(() => {
-        res.redirect(`/surf-spot/profile/${result._id}`);
-      })
-      .catch((error) => {
-        "Edit Surf Spot Error:", error;
+router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
+  const { surfSpotId } = req.params;
+  SurfSpot.findById(surfSpotId)
+    .then((result) => {
+      console.log(result);
+      res.render("surf-spots/edit-surf-spot", {
+        chooseCountry,
+        surfingLevel,
+        facilities,
+        foodOptions,
+        ratingScore,
+        surfingType,
+        result,
+        userInSession: req.session.currentUser,
       });
-  }
-);
+    })
+    .then(() => {
+      res.redirect(`/surf-spot/profile/${result._id}`);
+    })
+    .catch((error) => {
+      "Edit Surf Spot Error:", error;
+    });
+});
 
 //POST route ->> do we have to use next here? why?
 router.post("/profile/edit/:surfSpotId", (req, res) => {
@@ -215,17 +206,24 @@ router.post("/profile/edit/:surfSpotId", (req, res) => {
 // DELETE surf-spot profile
 // POST route
 
-router.post("/profile/delete/:deleteSpotId", (req, res) => {
-  const { deleteSpotId } = req.params;
+router.post(
+  "/profile/delete/:deleteSpotId",
+  isLoggedIn,
+  canEdit,
+  (req, res) => {
+    const { deleteSpotId } = req.params;
 
-  SurfSpot.findByIdAndDelete(deleteSpotId)
-    .then(() => res.redirect("/surf-spot/all"))
-    .catch((err) => console.log("Error in deleting a surf-spot profile:", err));
-});
+    SurfSpot.findByIdAndDelete(deleteSpotId)
+      .then(() => res.redirect("/surf-spot/all"))
+      .catch((err) =>
+        console.log("Error in deleting a surf-spot profile:", err)
+      );
+  }
+);
 
 // DELETE from all-surf-spots
 // POST route
-router.post("/all/delete/:deleteSpotId", (req, res) => {
+router.post("/all/delete/:deleteSpotId", isLoggedIn, canEdit, (req, res) => {
   const { deleteSpotId } = req.params;
 
   SurfSpot.findByIdAndDelete(deleteSpotId)
