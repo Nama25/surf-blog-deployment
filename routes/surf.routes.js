@@ -38,7 +38,7 @@ router.get("/all", (req, res) => {
         const canEdit = spot.user.toString() === req.session.currentUser._id;
         return { ...spot, canEdit };
       });
-      console.log(allResults);
+      // console.log(allResults);
       res.render("surf-spots/all-surf-spots", {
         allResults,
       });
@@ -50,40 +50,37 @@ router.get("/all", (req, res) => {
 // GET route
 
 router.get("/all-beginner", (req, res) => {
-  SurfSpot.find({skillLevel:"Beginner"})
-  .then(result => {
-    console.log("Beginner result:", result)
-    res.render("surf-spots/beginner-surf-spots", {result})
-  })
-  .catch((error) => console.log("Beginner result error:", error))
-})
+  SurfSpot.find({ skillLevel: "Beginner" })
+    .then((result) => {
+      console.log("Beginner result:", result);
+      res.render("surf-spots/beginner-surf-spots", { result });
+    })
+    .catch((error) => console.log("Beginner result error:", error));
+});
 
 //SHOW INTERMEDIATE SURF SPOTS
 // GET route
 
 router.get("/all-intermediate", (req, res) => {
-  SurfSpot.find({skillLevel:"Intermediate"})
-  .then(result => {
-    console.log("Intermediate result:", result)
-    res.render("surf-spots/intermediate-surf-spots", {result}) 
-  })
-  .catch((error) => console.log("Inter result error:", error))
-})
-
+  SurfSpot.find({ skillLevel: "Intermediate" })
+    .then((result) => {
+      console.log("Intermediate result:", result);
+      res.render("surf-spots/intermediate-surf-spots", { result });
+    })
+    .catch((error) => console.log("Inter result error:", error));
+});
 
 //SHOW ADVANCED SURF SPOTS
 // GET route
 
 router.get("/all-advanced", (req, res) => {
-  SurfSpot.find({skillLevel:"Advanced"})
-  .then(result => {
-    console.log("Advanced result:", result)
-    res.render("surf-spots/advanced-surf-spots", {result}) 
-  })
-  .catch((error) => console.log("Inter result error:", error))
-})
-
-
+  SurfSpot.find({ skillLevel: "Advanced" })
+    .then((result) => {
+      console.log("Advanced result:", result);
+      res.render("surf-spots/advanced-surf-spots", { result });
+    })
+    .catch((error) => console.log("Inter result error:", error));
+});
 
 // CREATE SURF SPOTS ROUTES
 // GET route

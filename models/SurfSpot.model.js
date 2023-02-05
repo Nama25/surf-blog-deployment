@@ -46,12 +46,12 @@ const surfSpotSchema = new Schema(
       required: true,
     },
     amenities: {
-      type: String,
+      type: [String],
       enum: ["Showers", "Toilets", "None"],
       required: true,
     },
     foodSpots: {
-      type: String,
+      type: [String],
       enum: ["Cafe", "Restaurant", "Supermarket", "Bar"],
       required: true,
     },
@@ -62,7 +62,7 @@ const surfSpotSchema = new Schema(
     typeOfSurfing: {
       type: [String],
       // syntax for multiple words in enum
-      enum: ["Surfing", "Body Surfing", "Body Boarding"],
+      enum: ["Surfing", "Body Surfing ", "Body Boarding"],
       required: true,
     },
     user: {
