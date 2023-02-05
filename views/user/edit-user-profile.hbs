@@ -1,36 +1,45 @@
 {{#if userInSession}}
-<h1>{{userInSession.username}} Update Your Profile</h1>
+  <h1>{{userInSession.username}} Update Your Profile</h1>
 {{/if}}
 
 <form action="/user/profile/edit/{{result.id}}" method="POST">
-      
-    <label>
-        Image:
-    </label>
-    
-    <label>
-        Surf Level:
-        <select name="surfLevel">
-            {{#each surfingLevel}}
-            <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-    </label>
-    
-    <label>
-        Type of Surfing:
-        <select name="typeOfSurfing" multiple>
-            {{#each surfingType}}
-            <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-    </label>
-    
-    <label>
-        My Favorite Spots:
-        <textarea name="favoriteSpots" placeholder="Tell us about your favorite spots!" cols="30" rows="10">{{result.favoriteSpots}}</textarea>
-    </label>
-    
-    <button type="submit"> Update My Profile </button>
+
+  <label>
+    Image:
+  </label>
+
+  <label>
+    Surf Level:
+    <select name="surfLevel">
+      {{#each levelSelected}}
+        {{#if chosenLevel}}
+          <option value={{this.surfLevel}} selected>{{this.surfLevel}}</option>
+        {{else}}
+          <option value={{this.surfLevel}}>{{this.surfLevel}}</option>
+        {{/if}}
+      {{/each}}
+    </select>
+  </label>
+
+  <label>
+    Type of Surfing:
+    <select name="typeOfSurfing" multiple>
+      {{#each surfingType}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label>
+    My Favorite Spots:
+    <textarea
+      name="favoriteSpots"
+      placeholder="Tell us about your favorite spots!"
+      cols="30"
+      rows="10"
+    >{{result.favoriteSpots}}</textarea>
+  </label>
+
+  <button type="submit"> Update My Profile </button>
 
 </form>

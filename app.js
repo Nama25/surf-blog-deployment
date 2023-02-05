@@ -31,7 +31,7 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 // everytime when we call a route it will execute next, and calls the next after
 app.use((req, res, next) => {
   app.locals.user = req.session.currentUser;
-  console.log(app.locals);
+  // console.log(app.locals);
   next();
 });
 // 👇 Start handling routes here

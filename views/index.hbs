@@ -5,3 +5,24 @@
 {{#if user}}
 <h1>{{user.username}}</h1>
 {{/if}}
+
+{{#each result}}
+<hr>
+<img src="{{this.imageUrl}}" alt="">
+  <p>
+    Name of the beach:
+    {{this.beachName}}
+  </p>
+
+  <p>
+    Country:
+    {{this.country}}
+  </p>
+
+  <p>
+    Surf Level:
+    {{this.skillLevel}}
+  </p>
+  {{/each}}
+
+  
