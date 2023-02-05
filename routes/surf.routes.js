@@ -171,6 +171,15 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
         return skillObj;
       });
 
+      const ratingSelected = ratingScore.map((ratingA) => {
+        const chosenRating = ratingA === result.rating;
+        const ratingObj = {
+          rating: ratingA,
+          chosenRating,
+        };
+        return ratingObj;
+      });
+
       // console.log(countrySelected);
       res.render("surf-spots/edit-surf-spot", {
         // spotImage,
@@ -178,11 +187,12 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
         // surfingLevel,
         facilities,
         foodOptions,
-        ratingScore,
+        // ratingScore,
         surfingType,
         result,
         countrySelected,
         skillSelected,
+        ratingSelected,
         userInSession: req.session.currentUser,
       });
     })

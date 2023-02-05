@@ -1,9 +1,16 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const { isLoggedIn, isLoggedOut } = require("../middleware/middleware.js");
+const {
+  isLoggedIn,
+  canEdit,
+  isLoggedOut,
+} = require("../middleware/middleware.js");
 const User = require("../models/User.model");
 const fileUploader = require("../config/cloudinary.config");
 
+// Arrays
+const surfingLevel = ["Beginner", "Intermediate", "Advanced"];
+const surfingType = ["Surfing", "Body Surfing", "Body Boarding"];
 // USER PROFILE ROUTES
 // GET route
 router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
@@ -22,8 +29,7 @@ router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
 
 // CREATE USER PROFILE route
 // GET route
-const surfingLevel = ["Beginner", "Intermediate", "Advanced"];
-const surfingType = ["Surfing", "Body Surfing", "Body Boarding"];
+
 // Do we have to add Middleware??????
 router.get("/create-profile", isLoggedIn, (req, res) => {
   res.render("user/create-user-profile", {
@@ -39,7 +45,7 @@ router.post("/create-profile", fileUploader.single("userImage"), (req, res) => {
 
   const { surfLevel, typeOfSurfing, favoriteSpots } = req.body;
   console.log("REQ FILE", req.file);
- 
+
   // Add Profile image field
   if (!surfLevel || !typeOfSurfing) {
     res.render("user/create-user-profile", {
@@ -73,16 +79,25 @@ router.get("/profile/edit/:usernameId", isLoggedIn, (req, res) => {
 
   User.findById(usernameId)
     .then((result) => {
-      console.log(result);
+      console.log("Result not defined:", result);
+      const levelSelected = surfingLevel.map((level) => {
+        const chosenLevel = level === result.surfLevel[0];
+        const levelObj = {
+          surfLevel: level,
+          chosenLevel,
+        };
+        return levelObj;
+      });
+      console.log("Selected Level", levelSelected);
+      // console.log(result);
       res.render("user/edit-user-profile", {
-        surfingLevel,
+        // surfingLevel,
         surfingType,
+        levelSelected,
         userInSession: req.session.currentUser,
         result,
       });
-    })
-    .then(() => {
-      res.redirect(`/user/profile/${result._id}`);
+      return result;
     })
     .catch((error) => console.log("Error updating user profile", error));
 });

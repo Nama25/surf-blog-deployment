@@ -112,12 +112,15 @@
   <label for="">
     Rating:
     <select name="rating">
-      {{#each ratingScore}}
-        <option value="{{this}}">{{this}}</option>
+      {{#each ratingSelected}}
+      {{#if chosenRating}}
+      <option value="{{this.rating}}" selected>{{this.rating}}</option>
+      {{else}}
+      <option value="{{this.rating}}">{{this.rating}}</option>
+      {{/if}}
       {{/each}}
-
     </select>
-  </label>
+  </label> 
 
   <label>
     Type of Surfing:
