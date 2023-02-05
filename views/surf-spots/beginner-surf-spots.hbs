@@ -1,0 +1,29 @@
+<h1>Beginner Surf Spots</h1>
+
+<form action="/surf-spot/all" method="GET">
+    <a href="/surf-spot/all">All Spots</a>
+    <a href="/surf-spot/all-beginner">Beginner</a>
+    <a href="/surf-spot/all-intermediate">Intermediate</a>
+    <a href="/surf-spot/all-advanced">Advanced</a>
+</form>
+
+{{#each result}}
+<hr>
+<img src="{{this.imageUrl}}" alt="">
+  <p>
+    Name of the beach:
+    {{this.beachName}}
+  </p>
+
+  <p>
+    Country:
+    {{this.country}}
+  </p>
+
+  <p>
+    Surf Level:
+    {{this.skillLevel}}
+  </p>
+  {{/each}}
+
+<a href="/surf-spot/all">Back</a>
