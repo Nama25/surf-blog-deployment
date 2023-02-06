@@ -1,43 +1,42 @@
 <h1>All Surf Spots</h1>
 
 <form action="/surf-spot/all" method="GET">
-    <a href="/surf-spot/all">All Spots</a>
-    <a href="/surf-spot/all-beginner">Beginner</a>
-    <a href="/surf-spot/all-intermediate">Intermediate</a>
-    <a href="/surf-spot/all-advanced">Advanced</a>
+    <a href="/surf-spot/all" class="btns">All Spots</a>
+    <a href="/surf-spot/all-beginner" class="btns">Beginner</a>
+    <a href="/surf-spot/all-intermediate" class="btns">Intermediate</a>
+    <a href="/surf-spot/all-advanced" class="btns">Advanced</a>
 </form>
 
-<div id="allSurfSpots">
 
   {{! Image of beach }}
   {{! <img src="" alt=""> }}
+  <div class="allSurfSpots">
+  {{!-- <div class="row"> --}}
 {{#each allResults}}
-<hr>
-<img src="{{imageUrl}}" alt="">
-  <p>
-    Name of the beach:
-    {{beachName}}
-  </p>
 
-  <p>
-    Country:
-    {{country}}
-  </p>
+  {{!-- <div class="col-sm-6"> --}}
+<div class="card text-center" >
+  <img src="{{imageUrl}}" class="card-img-top" alt="">
+  <div class="card-body">
+        {{!-- Name of the beach: --}}
+      <h5 class="card-title">{{beachName}}</h5>  
 
-  <p>
-    Surf Level:
-    {{skillLevel}}
-  </p>
+      <h6 class="card-subtitle mb-2 text-muted">{{country}}</h6>        
 
-  {{#if canEdit}}
-    <a href="/surf-spot/profile/edit/{{_id}}"><i class="fa-solid fa-pen-to-square icons" title="Edit"></i></a>
-    
-    <form action="/surf-spot/all/delete/{{_id}}" method="POST">
-      <button class="icons"><i class="fa-solid fa-trash-can" title="Delete"></i></i></button>
-    </form>
-    <hr>
-  {{/if}}
+      <p class="card-text">{{skillLevel}}</p>
+
+      {{#if canEdit}}
+        <a href="/surf-spot/profile/edit/{{_id}}"><i class="fa-solid fa-pen-to-square icons" title="Edit"></i></a>
+
+        <form action="/surf-spot/all/delete/{{_id}}" method="POST">
+          <button class="icons"><i class="fa-solid fa-trash-can" title="Delete"></i></button>
+        </form>
+      {{/if}}
+    </div>
+  </div>
+  {{!-- </div> --}}
   
   {{/each}}
-
+{{!-- </div> --}}
 </div>
+
