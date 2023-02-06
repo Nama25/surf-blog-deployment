@@ -1,28 +1,26 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Surfers!</p>
 
-{{!-- Add username so person knows they're logged in  --}}
-{{#if user}}
-<h1>{{user.username}}</h1>
-{{/if}}
 
-{{#each result}}
-<hr>
-<img src="{{this.imageUrl}}" alt="">
-  <p>
-    Name of the beach:
-    {{this.beachName}}
-  </p>
+  {{!-- Add username so person knows they're logged in  --}}
+  {{#if user}}
+  <h1>{{user.username}}</h1>
+  {{/if}}
 
-  <p>
-    Country:
-    {{this.country}}
-  </p>
-
-  <p>
-    Surf Level:
-    {{this.skillLevel}}
-  </p>
+<div class="allSurfSpots">
+  {{#each result}}
+  <a href="/surf-spot/profile/{{this._id}}">
+    <div class="card">
+      <img src="{{this.imageUrl}}" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{this.beachName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{this.country}}</h6>
+          <p class="card-text">{{this.skillLevel}}</p>
+        </div>
+    </div>
+    </a>
   {{/each}}
+</div>
+
 
   
