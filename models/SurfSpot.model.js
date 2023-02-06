@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Comments = require("./Comments.model");
 const surfSpotSchema = new Schema(
   {
     // spotImage: {
@@ -69,6 +70,12 @@ const surfSpotSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comments",
+      },
+    ],
   },
   { timestamps: true }
 );
