@@ -118,7 +118,7 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
     rating,
     typeOfSurfing,
   } = req.body;
-  console.log("REQ FILE", req.file);
+  // console.log("REQ FILE", req.file);
 
   if (
     // !imageUrl ||
@@ -216,7 +216,42 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
         return ratingObj;
       });
 
-      // console.log(countrySelected);
+      const typeArray = [];
+      for (let i = 0; i < surfingType.length; i++) {
+        if (result.typeOfSurfing.includes(surfingType[i])) {
+          typeArray.push({ isChecked: true, surfType: surfingType[i] });
+        } else {
+          typeArray.push({ isChecked: false, surfType: surfingType[i] });
+        }
+      }
+
+      const amenitiesArray = [];
+      for (let i = 0; i < facilities.length; i++) {
+        if (result.amenities.includes(facilities[i])) {
+          amenitiesArray.push({ isChecked: true, facilityType: facilities[i] });
+        } else {
+          amenitiesArray.push({
+            isChecked: false,
+            facilityType: facilities[i],
+          });
+        }
+      }
+
+      const foodArray = [];
+      for (let i = 0; i < foodOptions.length; i++) {
+        if (result.foodSpots.includes(foodOptions[i])) {
+          foodArray.push({
+            isChecked: true,
+            foodType: foodOptions[i],
+          });
+        } else {
+          foodArray.push({
+            isChecked: false,
+            foodType: foodOptions[i],
+          });
+        }
+      }
+
       res.render("surf-spots/edit-surf-spot", {
         // spotImage,
         // chooseCountry,
@@ -230,6 +265,9 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
         skillSelected,
         ratingSelected,
         userInSession: req.session.currentUser,
+        typeArray,
+        amenitiesArray,
+        foodArray,
       });
     })
     .then(() => {

@@ -11,6 +11,7 @@ const fileUploader = require("../config/cloudinary.config");
 // Arrays
 const surfingLevel = ["Beginner", "Intermediate", "Advanced"];
 const surfingType = ["Surfing", "Body Surfing", "Body Boarding"];
+
 // USER PROFILE ROUTES
 // GET route
 router.get("/profile/:usernameId", isLoggedIn, (req, res) => {
@@ -88,7 +89,18 @@ router.get("/profile/edit/:usernameId", isLoggedIn, (req, res) => {
         };
         return levelObj;
       });
-      console.log("Selected Level", levelSelected);
+
+      const typeArray = [];
+      for (let i = 0; i < surfingType.length; i++) {
+        if (result.typeOfSurfing.includes(surfingType[i])) {
+          typeArray.push({ isChecked: true, surfType: surfingType[i] });
+        } else {
+          typeArray.push({ isChecked: false, surfType: surfingType[i] });
+        }
+      }
+      // console.log(typeArray);
+
+      // console.log("Selected Level", levelSelected);
       // console.log(result);
       res.render("user/edit-user-profile", {
         // surfingLevel,
@@ -96,6 +108,7 @@ router.get("/profile/edit/:usernameId", isLoggedIn, (req, res) => {
         levelSelected,
         userInSession: req.session.currentUser,
         result,
+        typeArray,
       });
       return result;
     })
