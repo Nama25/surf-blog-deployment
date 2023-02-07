@@ -135,9 +135,9 @@
     <select name="typeOfSurfing" multiple>
       {{#each typeArray}}
         {{#if isChecked}}
-          <option value={{surfType}} selected>{{surfType}} </option>
+          <option value="{{surfType}}" selected>{{surfType}} </option>
         {{else}}
-          <option value={{surfType}}>{{surfType}} </option>
+          <option value="{{surfType}}">{{surfType}} </option>
         {{/if}}
       {{/each}}
     </select>
