@@ -1,6 +1,12 @@
 body {
-  padding: 50px;
+  /* padding: 0, 10px, 10px, 10px; */
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#homePageImg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* a {
@@ -8,7 +14,7 @@ body {
   text-decoration: none;
 } */
 
-/* Links  */
+/* A tags / Links  */
  .btns {
   text-decoration: none;
   color: rgb(26, 129, 170);
@@ -45,17 +51,62 @@ h1 {
  background-color: rgb(88, 181, 218);
 }
 
+/* Nav Bar */
 #nav-bar {
-  border: 2px solid black;
+  background-color: rgb(179, 169, 105);
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', cursive;
 }
 
 #nav-bar ul a {
   text-decoration: none;
-  padding: 5px;
+  padding: 0px 15px;
+  color: white;
+  font-size: 3rem;
+  margin: 10px;
+  /* border: 1px solid blue; */
 }
 
 #nav-bar ul a:hover {
- 
+  background-color: white;
+  color: rgb(179, 169, 105);
+}
+
+/* Sign up Login buttons navbar */
+
+.authBtn {
+background-color: rgb(179, 169, 105);
+/* color: rgb(223, 209, 116); */
+  border: none;
+}
+
+#nav-bar ul .authBtn a {
+  color: rgb(179, 169, 105);
+  background-color: white;
+  border: 2px solid white;
+  padding: 2px 8px;
+}
+
+#nav-bar ul .authBtn a:hover {
+  background-color: rgb(179, 169, 105);
+  color: white;
+}
+
+/* Login button form */
+.loginBtn {
+  border: none;
+  background-color: rgb(179, 169, 105);
+  color: white;
+  padding: 3px 5px;
+  font-size: 1.5rem;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.loginBtn:hover {
+  background-color: white;
+  border: 1px solid rgb(179, 169, 105);
+  color: rgb(179, 169, 105);
 }
 
 /* surf cards all spots */
