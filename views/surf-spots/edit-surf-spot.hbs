@@ -31,7 +31,7 @@
     <input name="beachName" type="text" value="{{result.beachName}}" />
   </label>
 
-  <label for="">
+  <label>
     Country:
     <select name="country">
       {{#each countrySelected}}
@@ -67,7 +67,7 @@
     </select>
   </label>
 
-  <label for="">
+  <label>
     Surf Spot Description:
     <textarea
       name="spotDescription"
@@ -78,7 +78,7 @@
     >{{result.spotDescription}}</textarea>
   </label>
 
-  <label for="">
+  <label>
     Accessibility:
     <textarea
       name="accessibility"
@@ -89,35 +89,43 @@
     >{{result.accessibility}}</textarea>
   </label>
 
-  <label for="">
+  <label>
     Amenities:
     <select name="amenities" multiple>
-      {{#each facilities}}
-        <option value="{{this}}">{{this}}</option>
+      {{#each amenitiesArray}}
+        {{#if isChecked}}
+          <option value={{facilityType}} selected>{{facilityType}}</option>
+        {{else}}
+          <option value={{facilityType}}>{{facilityType}}</option>
+        {{/if}}
       {{/each}}
 
     </select>
   </label>
 
-  <label for="">
+  <label>
     Food:
     <select name="foodSpots" multiple>
-      {{#each foodOptions}}
-        <option value="{{this}}">{{this}}</option>
+      {{#each foodArray}}
+        {{#if isChecked}}
+          <option value={{foodType}} selected>{{foodType}}</option>
+        {{else}} 
+          <option value={{foodType}} selected>{{foodType}}</option>
+        {{/if}}  
       {{/each}}
 
     </select>
   </label>
 
-  <label for="">
+  <label>
     Rating:
     <select name="rating">
       {{#each ratingSelected}}
-      {{#if chosenRating}}
-      <option value="{{this.rating}}" selected>{{this.rating}}</option>
-      {{else}}
-      <option value="{{this.rating}}">{{this.rating}}</option>
-      {{/if}}
+        {{#if chosenRating}}
+          <option value="{{this.rating}}" selected>{{this.rating}}</option>
+        {{else}}
+          <option value="{{this.rating}}">{{this.rating}}</option>
+        {{/if}}
       {{/each}}
     </select>
   </label> 
@@ -125,8 +133,12 @@
   <label>
     Type of Surfing:
     <select name="typeOfSurfing" multiple>
-      {{#each surfingType}}
-        <option value="{{this}}">{{this}}</option>
+      {{#each typeArray}}
+        {{#if isChecked}}
+          <option value="{{surfType}}" selected>{{surfType}} </option>
+        {{else}}
+          <option value="{{surfType}}">{{surfType}} </option>
+        {{/if}}
       {{/each}}
     </select>
   </label>

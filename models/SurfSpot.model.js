@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Comments = require("./Comments.model");
 const surfSpotSchema = new Schema(
   {
     // spotImage: {
@@ -10,7 +11,6 @@ const surfSpotSchema = new Schema(
     beachName: {
       type: String,
       required: true,
-      unique: true,
     },
     country: {
       type: String,
@@ -69,6 +69,12 @@ const surfSpotSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comments",
+      },
+    ],
   },
   { timestamps: true }
 );

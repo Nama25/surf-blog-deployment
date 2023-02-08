@@ -2,6 +2,8 @@
 
 {{!-- Image of beach --}}
 {{!-- <img src="" alt=""> --}}
+
+<div id="surfSpot">
 <img src="{{result.imageUrl}}" alt="">
     <p>
         Name of the beach: {{result.beachName}}
@@ -55,6 +57,53 @@
 <form action="/surf-spot/profile/delete/{{result._id}}" method="POST">
     <button class="icons" title="Delete"><i class="fa-solid fa-trash-can"></i></i></button>
 </form>
+
+{{#unless comments}}
+<p>No comments yet!</p>
+{{/unless}}
+
+{{#each comments}}
+<p>{{result._id}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{userObj._id}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{surfObj._id}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{comments.commentText}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{this.commentText}}</p>
+{{/each}}
+
+<hr>
+
+<h3>Add comment</h3>
+
+{{!-- comment/ --}}
+<form action="/surf-spot/profile/{{result._id}}" method="POST">
+    <label> Your username:
+        <input type="text" name="user" />
+    </label>
+
+    <input type="text" name="postAuthor" value="{{user.username}}" hidden />
+    <textarea name="commentText" cols="30" rows="2"></textarea>
+
+    <button type="submit">Comment</button>
+</form>
+
+<br> 
+{{!-- Add / connect comments to User model --}}
+{{!-- <a href="/surf-spot/profile/{{user._id}}">See all {{user.username}}'s posts </a> --}}
+
+
+</div>
 
 
 

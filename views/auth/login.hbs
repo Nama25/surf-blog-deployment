@@ -1,8 +1,6 @@
 <h1>Login</h1>
 
-<div id="form">
-  <h2>Login</h2>
- 
+<div id="form"> 
   <form action="/login" method="POST">
  
     <label> Email
@@ -13,7 +11,7 @@
       <input type="password" name="password" placeholder="********" />
     </label>
  
-    <button type="submit">Login</button>
+    <button type="submit" class="loginBtn">Login</button>
  
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>

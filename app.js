@@ -41,7 +41,7 @@ app.use("/", indexRoutes);
 app.use("/", require("./routes/auth.routes"));
 app.use("/user", require("./routes/user.routes"));
 app.use("/surf-spot", require("./routes/surf.routes"));
-app.use("/comments", require("./routes/comments.routes"));
+app.use("/surf-spot", require("./routes/comments.routes"));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
