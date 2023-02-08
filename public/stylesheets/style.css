@@ -173,16 +173,16 @@ background-color: rgb(179, 169, 105);
 }
 
 /* Surf Spot profile */
-#surfSpot {
+/* #surfSpot {
   border: 2px solid maroon;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 10px;
-  gap: 10px 20px; */
-    /* row-gap column gap */
-    /* row-gap: 10px;
-    column-gap: 20px; */
+  gap: 10px;
+  gap: 10px 20px;
+    row-gap column gap
+    row-gap: 10px;
+    column-gap: 20px;
 }
 #surfSpot img {
   max-width: 50%;
@@ -192,7 +192,8 @@ background-color: rgb(179, 169, 105);
 }
 .spotDetails{
   border: 2px solid burlywood;
-}
+} 
+*/
 
 
 
