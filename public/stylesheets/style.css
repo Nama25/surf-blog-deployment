@@ -14,21 +14,29 @@ body {
   text-decoration: none;
 } */
 
-/* A tags / Links  */
- .btns {
+/* Buttons for filtered surf levels  */
+ .filterBtns {
   text-decoration: none;
-  color: rgb(26, 129, 170);
+  color: rgb(179, 169, 105);
   cursor: pointer;
-  border: 1px solid rgb(26, 129, 170);
+  border: 1px solid rgb(179, 169, 105);
+  padding: 5px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.filterBtns:hover {
+  color: white;
+  background-color: rgb(179, 169, 105);
   padding: 5px;
   border-radius: 5px;
 }
 
-.btns:hover {
-  color: white;
-  background-color: rgb(26, 129, 170);
-  padding: 5px;
-  border-radius: 5px;
+/* surf spot filter panel */
+.filter-panel {
+  margin-left: 65px;
+  margin-top: 30px;
+  margin-right: 5px;
 }
 
 h1 {
@@ -39,7 +47,7 @@ h1 {
 .icons {
   background-color: white;
   border: none;
-  color: rgb(26, 129, 170);
+  color: rgb(179, 169, 105);
   padding: 5px 5px;
   margin: 5px;
   font-size: 22px;
@@ -48,7 +56,7 @@ h1 {
 
 .icons:hover {
  color: white;
- background-color: rgb(88, 181, 218);
+ background-color: rgb(179, 169, 105);
 }
 
 /* Nav Bar */
@@ -101,8 +109,6 @@ background-color: rgb(179, 169, 105);
   padding: 2px 8px;
 }
 
-
-
 /* position sign up login logout navbar right */
 
 .nav-bar-right {
@@ -125,7 +131,7 @@ background-color: rgb(179, 169, 105);
   color: rgb(179, 169, 105);
 }
 
-/* surf cards all spots */
+/* surf spot cards */
 .allSurfSpots {
   display: flex;
   flex-wrap: wrap;
@@ -133,7 +139,6 @@ background-color: rgb(179, 169, 105);
 
 .card {
   width: 18rem;
-  border: 1px solid rgb(26, 129, 170);
   margin: 50px 10px 30px 65px;
   transition: transform .2s;
 }
@@ -143,13 +148,55 @@ background-color: rgb(179, 169, 105);
   transform: scale(1.1);
 }
 
-/* surf spot filter panel */
-
-.filter-panel {
-  margin-left: 65px;
-  margin-top: 30px;
-  margin-right: 5px;
+.allSurfSpots a {
+  text-decoration: none;
+  color: rgb(179, 169, 105);
 }
+
+.allSurfSpots a:hover {
+  color: rgb(179, 169, 105);
+}
+
+.card-subtitle {
+  background-color: rgb(179, 169, 105);
+  border-radius: 2px;
+  color: white;
+  padding: 3px;
+  /* max-width: 100px; */
+}
+
+/* Edit and Delete Icons */
+.editIcons {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+/* Surf Spot profile */
+#surfSpot {
+  border: 2px solid maroon;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* gap: 10px;
+  gap: 10px 20px; */
+    /* row-gap column gap */
+    /* row-gap: 10px;
+    column-gap: 20px; */
+}
+#surfSpot img {
+  max-width: 50%;
+  height: auto;
+  border: 2px solid blue;
+  margin-right: 40px;
+}
+.spotDetails{
+  border: 2px solid burlywood;
+}
+
+
+
+
 
 
 
