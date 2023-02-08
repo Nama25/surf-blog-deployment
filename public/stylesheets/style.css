@@ -93,6 +93,22 @@ background-color: rgb(179, 169, 105);
   color: white;
 }
 
+#logout-form {
+  text-decoration: none;
+  color: rgb(179, 169, 105);
+  background-color: white;
+  border: 2px solid white;
+  padding: 2px 8px;
+}
+
+
+
+/* position sign up login logout navbar right */
+
+.nav-bar-right {
+  float: right
+}
+
 /* Login button form */
 .loginBtn {
   border: none;
@@ -118,13 +134,21 @@ background-color: rgb(179, 169, 105);
 .card {
   width: 18rem;
   border: 1px solid rgb(26, 129, 170);
-  margin: 10px;
+  margin: 50px 10px 30px 65px;
   transition: transform .2s;
 }
 
 .card:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+/* surf spot filter panel */
+
+.filter-panel {
+  margin-left: 65px;
+  margin-top: 30px;
+  margin-right: 5px;
 }
 
 

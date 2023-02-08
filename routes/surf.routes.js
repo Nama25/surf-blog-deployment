@@ -102,7 +102,8 @@ router.get("/create", isLoggedIn, (req, res) => {
 // fileUpload.array for multiple pictures
 router.post("/create", fileUploader.single("beachImage"), (req, res) => {
   let mainUser;
-  User.findById(req.session.currentUser._id).then((userObj) => {
+  User.findById(req.session.currentUser._id)
+  .then((userObj) => {
     mainUser = userObj;
   });
   const {

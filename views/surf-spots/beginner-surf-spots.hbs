@@ -1,6 +1,5 @@
-<h1>Beginner Surf Spots</h1>
 
-<form action="/surf-spot/all" method="GET">
+<form class="filter-panel" action="/surf-spot/all" method="GET">
     <a href="/surf-spot/all" class="btns">All Spots</a>
     <a href="/surf-spot/all-beginner" class="btns">Beginner</a>
     <a href="/surf-spot/all-intermediate" class="btns">Intermediate</a>
@@ -9,6 +8,7 @@
 
 <div class="allSurfSpots">
 {{#each result}}
+ <a href="/surf-spot/profile/{{this._id}}">
   <div class="card">
     <img src="{{this.imageUrl}}" alt="">
     <div class="card-body">
@@ -19,6 +19,7 @@
         <p class="card-text">{{this.skillLevel}}</p>
       </div>
     </div>
+    </a>
   {{/each}}
 </div>
 <a href="/surf-spot/all">Back</a>

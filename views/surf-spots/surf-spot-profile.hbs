@@ -63,14 +63,31 @@
 {{/unless}}
 
 {{#each comments}}
-<p><b>{{this.user.username}}:</b> {{this.commentText}}</p>
+<p>{{result._id}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{userObj._id}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{surfObj._id}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{comments.commentText}}</p>
+{{/each}}
+
+{{#each comments}}
+<p>{{this.commentText}}</p>
 {{/each}}
 
 <hr>
 
 <h3>Add comment</h3>
 
-<form action="/surf-spot/profile/comment/{{_id}}" method="post">
+{{!-- comment/ --}}
+<form action="/surf-spot/profile/{{result._id}}" method="POST">
     <label> Your username:
         <input type="text" name="user" />
     </label>
@@ -81,7 +98,7 @@
     <button type="submit">Comment</button>
 </form>
 
-<br>
+<br> 
 {{!-- Add / connect comments to User model --}}
 {{!-- <a href="/surf-spot/profile/{{user._id}}">See all {{user.username}}'s posts </a> --}}
 

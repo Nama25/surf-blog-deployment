@@ -1,6 +1,5 @@
-<h1>All Surf Spots</h1>
 
-<form action="/surf-spot/all" method="GET">
+<form class="filter-panel" action="/surf-spot/all" method="GET">
     <a href="/surf-spot/all" class="btns">All Spots</a>
     <a href="/surf-spot/all-beginner" class="btns">Beginner</a>
     <a href="/surf-spot/all-intermediate" class="btns">Intermediate</a>
@@ -13,7 +12,7 @@
   <div class="allSurfSpots">
   {{!-- <div class="row"> --}}
 {{#each allResults}}
-
+<a href="/surf-spot/profile/{{this._id}}">
   {{!-- <div class="col-sm-6"> --}}
 <div class="card text-center" >
   <img src="{{imageUrl}}" class="card-img-top" alt="">
@@ -35,7 +34,7 @@
     </div>
   </div>
   {{!-- </div> --}}
-  
+  </a>
   {{/each}}
 {{!-- </div> --}}
 </div>
