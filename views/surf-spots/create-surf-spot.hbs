@@ -1,0 +1,174 @@
+<div class="formImg">
+
+  <div>
+    {{#if userInSession}}
+      <h2 class="createHeader">Hey, {{userInSession.username}}!</h2>
+      <p class="createSub">let's surf - tell us your favorite spot</p>
+      {{!-- {{else}} --}}
+
+      {{! <br /> }}
+      {{! <p>Still no logged in user, sorry!</p> }}
+    {{/if}}
+  </div>
+
+  <form
+    class="createFormContainer"
+    action="/surf-spot/create"
+    method="post"
+    enctype="multipart/form-data"
+  >
+
+    <div class="mb-3">
+      <label for="formGroupInput1" class="form-label">Upload image of surf spot</label>
+      <input
+        name="beachImage"
+        type="file"
+        multiple
+        class="form-control"
+        id="formGroupInput1"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="formGroupInput2" class="form-label">Name of the beach</label>
+      <input
+        name="beachName"
+        type="text"
+        class="form-control"
+        id="formGroupInput2"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="formGroupInput4" class="form-label">Google Map Link</label>
+      <input
+        type="text"
+        name="mapLink"
+        class="form-control"
+        id="formGroupInput4"
+      />
+    </div>
+
+
+
+    <div class="mb-3">
+      <label for="formGroupInput3" class="form-label">Country</label>
+        <select name="country" class="form-control" id="formGroupInput3">
+          <option value="" disabled selected>Select a country</option>
+          {{#each chooseCountry}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      
+    </div>
+
+    <div class="mb-3">
+      <label for="formGroupInput5" class="form-label">Surf Level</label>
+        <select name="skillLevel" class="form-control" id="formGroupInput5">
+          <option value="" disabled selected>Select surfing level</option>
+          {{#each surfingLevel}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      
+    </div>
+
+
+ <div class="mb-3">
+    <label for="formGroupInput8" class="form-label">Rating</label>
+      <select name="rating" class="form-control" id="formGroupInput8">
+        {{#each ratingScore}}
+          <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+      
+      </div>
+
+      
+    <div class="mb-3">
+      <label for="formGroupInput6" class="form-label">Surf Spot Description</label>
+      <textarea
+        class="form-control"
+        id="formGroupInput6"
+        name="spotDescription"
+        placeholder="Provide a brief description of your experience at this spot"
+      ></textarea>
+       </div>
+
+         <div class="mb-3">
+      <label for="formGroupInput7" class="form-label">Accessibility</label>
+      <textarea
+        class="form-control"
+        name="accessibility"
+        placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark."
+        id="formGroupInput7"
+      ></textarea>
+
+    </div>
+   
+      
+
+ 
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="" class="form-label">
+          Type of Surfing</label>
+          <select
+            class="form-select"  aria-label="multiple select example"
+            name="typeOfSurfing"
+            multiple
+          >
+            {{#each surfingType}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        
+      </div>
+
+      <div class="mb-3 col">
+        <label for="" class="form-label">
+          Amenities</label>
+          <select
+             class="form-select"  aria-label="multiple select example"
+            name="amenities"
+            multiple
+          >
+            {{#each facilities}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+
+          </select>
+        
+      </div>
+
+      <div class="mb-3 col">
+        <label for="" class="form-label">
+          Food </label>
+          <select
+            class="form-select mb-3"
+            aria-label=".form-select-lg example"
+            name="foodSpots"
+            multiple
+          >
+            {{#each foodOptions}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+
+          </select>
+       
+      </div>
+
+    </div>
+
+
+    
+    <br />
+
+    <button class="loginBtn" type="submit">Create Spot</button>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
+  </form>
+</div>

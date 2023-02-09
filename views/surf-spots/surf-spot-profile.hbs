@@ -1,0 +1,90 @@
+<div id="surfSpot">
+        
+    <img src="{{result.imageUrl}}" alt="">
+    <div class="spotDetails">
+        
+        <p><small> Beach: </small> <span>{{result.beachName}}</span> </p>
+        
+        <p><small> Country: </small> <span>{{result.country}}</span> </p>
+
+        <p><small> Location: </small> <span>{{result.mapLink}}</span> </p>
+
+        <p><small> Surf Level: </small> <span>{{result.skillLevel}}</span> </p>
+
+        <p><small> Description: </small> <span>{{result.spotDescription}}</span> </p>
+
+        <p><small> Accessibility: </small> <span>{{result.accessibility}}</span> </p>
+
+        <p><small> Amenities: </small> <span>{{result.amenities}}</span> </p>
+
+        <p><small> Food: </small> <span>{{result.foodSpots}}</span> </p>
+
+        <p><small> Rating: </small> <span>{{result.rating}}</span> </p>
+
+        <p><small> Type of Surfing: </small> <span>{{result.typeOfSurfing}}</span> </p>
+
+        <p><small> Surfer: </small> <span>{{user.username}}</span> </p>
+
+        <p class="createdAt text-muted">Created: {{result.createdAt}}</p>
+        <p class="createdAt text-muted">Updated: {{result.updatedAt}}</p>
+
+        
+        
+            <div class="editIcons">
+                <a href="/surf-spot/profile/edit/{{result._id}}"><i class="fa-solid fa-pen-to-square icons" title="Edit"></i></a>
+                <form action="/surf-spot/profile/delete/{{result._id}}" method="POST">
+                    <button class="icons" title="Delete"><i class="fa-solid fa-trash-can"></i></i></button>
+                </form>
+            </div>
+
+        <a href="/surf-spot/all" class="backBtn">Back</a>
+
+    </div>
+</div>
+
+{{!-- <div id="comments">
+    {{#unless comments}}
+    <p>No comments yet!</p>
+    {{/unless}}
+
+    {{#each comments}}
+    <p>{{result._id}}</p>
+    {{/each}}
+
+    {{#each comments}}
+    <p>{{userObj._id}}</p>
+    {{/each}}
+
+    {{#each comments}}
+    <p>{{surfObj._id}}</p>
+    {{/each}}
+
+    {{#each comments}}
+    <p>{{comments.commentText}}</p>
+    {{/each}}
+
+    {{#each comments}}
+    <p>{{this.commentText}}</p>
+    {{/each}}
+
+    <hr>
+
+    <h3>Add comment</h3>
+
+    
+    <form action="/surf-spot/profile/{{result._id}}" method="POST">
+
+        <input type="text" name="postAuthor" value="{{user.username}}" hidden />
+        <textarea name="commentText" cols="30" rows="2"></textarea>
+
+        <button type="submit">Comment</button>
+    </form>
+
+    <br>
+    
+    
+
+</div> --}}
+
+
+

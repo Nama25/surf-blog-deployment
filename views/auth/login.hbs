@@ -1,0 +1,45 @@
+{{!--   <div>
+    <img src="images/surf2.jpg" id="authImg" class="img-fluid" alt="Man looking at person surfing">
+  </div> --}}
+
+{{!-- <div id="form" class="authImg"> 
+  <form class="authForm" class="container" action="/login" method="POST">
+ 
+    <label> Email
+      <input type="email" name="email" placeholder="Your e-mail" />
+    </label>
+ 
+    <label>Password
+      <input type="password" name="password" placeholder="********" />
+    </label>
+ 
+    <button type="submit" class="loginBtn">Login</button>
+ 
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div> --}}
+
+
+<div class="authImg"> 
+  <form class="formContainer" action="/login" method="POST">
+ 
+    <label for="email"><b>Email</b></label>
+      <input class="inputAuth" type="text" name="email" placeholder="Your Email" />
+   
+ 
+    <label for="psw"><b>Password</b></label>
+      <input class="inputAuth" type="password" name="password" placeholder="********" />
+    
+ 
+    <button type="submit" class="loginBtn">Login</button>
+ 
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+
+
+
