@@ -1,3 +1,4 @@
+
 const { Schema, model } = require("mongoose");
 const Comments = require("./Comments.model");
 const surfSpotSchema = new Schema(

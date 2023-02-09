@@ -5,7 +5,7 @@ const User = require("../models/User.model");
 const {
   isLoggedIn,
   isLoggedOut,
-  canEdit,
+  // canEdit,
 } = require("../middleware/middleware.js");
 // const User = require("../models/User.model");
 const fileUploader = require("../config/cloudinary.config");
@@ -177,7 +177,8 @@ router.post("/create", fileUploader.single("beachImage"), (req, res) => {
 
 // SURF SPOT PROFILE ROUTES
 // GET route
-router.get("/profile/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
+// router.get("/profile/:surfSpotId", isLoggedIn, canEdit, (req, res)
+router.get("/profile/:surfSpotId", isLoggedIn, (req, res) => {
   SurfSpot.findById(req.params.surfSpotId)
     .then((result) => {
       res.render("surf-spots/surf-spot-profile", {
@@ -190,7 +191,8 @@ router.get("/profile/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
 
 // EDIT SURF SPOT PROFILE ROUTES
 // GET route
-router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
+// router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res)
+router.get("/profile/edit/:surfSpotId", isLoggedIn, (req, res) => {
   const { surfSpotId } = req.params;
   SurfSpot.findById(surfSpotId)
     .then((result) => {
@@ -341,7 +343,7 @@ router.post(
 router.post(
   "/profile/delete/:deleteSpotId",
   isLoggedIn,
-  canEdit,
+  // canEdit,
   (req, res) => {
     const { deleteSpotId } = req.params;
 
@@ -355,7 +357,8 @@ router.post(
 
 // DELETE from all-surf-spots
 // POST route
-router.post("/all/delete/:deleteSpotId", isLoggedIn, canEdit, (req, res) => {
+// router.post("/all/delete/:deleteSpotId", isLoggedIn, canEdit, (req, res)
+router.post("/all/delete/:deleteSpotId", isLoggedIn,  (req, res) => {
   const { deleteSpotId } = req.params;
 
   SurfSpot.findByIdAndDelete(deleteSpotId)

@@ -1,6 +1,6 @@
 <div class="editFormImg">
 
-
+<div>
 {{#if userInSession}}
   <h2 class="createHeader">Hey, {{userInSession.username}}!</h2>
   <p class="createSub">Update your surf spot {{result.beachName}}</p>
@@ -9,23 +9,28 @@
   {{! <br /> }}
   {{! <p>Still no logged in user, sorry!</p> }}
 {{/if}}
+</div>
 
 <form
+  class="createFormContainer"
   action="/surf-spot/profile/edit/{{result._id}}"
   method="post"
   enctype="multipart/form-data"
 >
 
-  <label>
-    Edit image of surf spot:
+ <div class="mb-3">
+  <label for="formGroupInput1" class="form-label">Edit image of surf spot</label>
     <input type="file" name="updatedImage" />
     <input
       type="text"
       name="existingImage"
       hidden
       value="{{result.imageUrl}}"
+       class="form-control"
+        id="formGroupInput1"
     />
-  </label>
+  
+  </div>
 
   <label for="">
     Name of the beach:
