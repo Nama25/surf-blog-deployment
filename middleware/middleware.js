@@ -14,6 +14,7 @@ const isLoggedOut = (req, res, next) => {
   next();
 };
 
+// middleware can Edit
 /* const canEdit = (req, res, next) => {
   SurfSpot.findOne(req.params._id)
     .then((model) => {
