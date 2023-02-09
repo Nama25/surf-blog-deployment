@@ -43,6 +43,10 @@ router.get("/all", (req, res) => {
         allResults,
       });
     })
+    //render sign up and login combined hbs, when user is not loggedin
+/*     .then(() => { 
+    res.render("auth/signup-and-login")
+  }) */
     .catch((error) => console.log("Error retrieving all surf spots:", error));
 });
 
@@ -273,6 +277,7 @@ router.get("/profile/edit/:surfSpotId", isLoggedIn, canEdit, (req, res) => {
     })
     .then(() => {
       res.redirect(`/surf-spot/profile/${result._id}`);
+   
     })
     .catch((error) => {
       "Edit Surf Spot Error:", error;

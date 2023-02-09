@@ -1,53 +1,62 @@
-<h1>Create User Profile</h1>
 
-<form action="/user/create-profile" method="POST" enctype="multipart/form-data">
+<div class="userFormImg">
+  
 
-  <label>
+  <div>
     {{#if userInSession}}
-      <h2>Welcome {{userInSession.username}}!</h2>
-      <p>Please create your profile page</p>
+      <h2 class="createHeader">Welcome {{userInSession.username}}!</h2>
+      <p class="createSub">Please create your profile page</p>
     {{!-- {{else}} --}}
 
       {{!-- <br /> --}}
       {{!-- <p>Still no logged in user, sorry!</p> --}}
     {{/if}}
-  </label>
+  </div>
+
+<form class="createFormContainer" action="/user/create-profile" method="POST" enctype="multipart/form-data">
+
+  
 
 {{!-- Add upload image field --}}
-  <label for="">
-    Image*:
-    <input type="file" name="userImage">
-  </label>
+ <div class="mb-3">
+  <label for="formGroupInput1" class="form-label">Profile Image*</label>
+    <input type="file" name="userImage" class="form-control"
+        id="formGroupInput1">
+  </div>
 
-  <label>
-    Surf Level*:
-    {{! <input type="text" name="author" /> }}
-    {{!   select / name = Model Name
-    each = vairable name from routes }}
-
-    <select name="surfLevel">
+<div class="mb-3">
+  <label for="formGroupInput2" class="form-label"> Surf Level*</label>
+  <select name="surfLevel" class="form-control" id="formGroupInput2">
       {{#each surfingLevel}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
-    </select>
-  </label>
+   </select>
+  
+  </div>
 
-  <label>
-    Type of Surfing*:
-    <select name="typeOfSurfing" multiple>
+
+  <div class="mb-3">
+  <label class="form-label">Type of Surfing*</label>
+    <select class="form-select"  aria-label="multiple select example" name="typeOfSurfing" multiple>
       {{#each surfingType}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
-  </label>
+  
+  </div>
 
-  <label>
-    My Favorite Spots:
-    <textarea name="favoriteSpots" placeholder="Tell us about your favorite spots!" cols="30" rows="10"></textarea>
-  </label>
+<div class="mb-3">
+  <label for="formGroupInput3" class="form-label">My Favorite Spots</label>
+    <textarea class="form-control" id="formGroupInput3" name="favoriteSpots" placeholder="Tell us about your favorite spots!" cols="30" rows="10"></textarea>
+  </div>
+  
 
-  <button type="submit"> Create </button>
+  <button class="loginBtn" type="submit"> Create </button>
+
   {{#if errorMessage}}
           <p class="error">{{errorMessage}}</p>
   {{/if}}
 </form>
+
+</div>
+
