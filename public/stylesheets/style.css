@@ -1,6 +1,7 @@
 body {
   /* padding: 0, 10px, 10px, 10px; */
   padding: 10px;
+  padding-bottom: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -14,21 +15,31 @@ body {
   text-decoration: none;
 } */
 
-/* A tags / Links  */
- .btns {
+/* Buttons for filtered surf levels  */
+ .filterBtns {
   text-decoration: none;
-  color: rgb(26, 129, 170);
+  color: rgb(179, 169, 105);
   cursor: pointer;
-  border: 1px solid rgb(26, 129, 170);
+  border: 1px solid rgb(179, 169, 105);
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.filterBtns:hover {
+  color: white;
+  background-color: rgb(179, 169, 105);
   padding: 5px;
   border-radius: 5px;
 }
 
-.btns:hover {
-  color: white;
-  background-color: rgb(26, 129, 170);
-  padding: 5px;
-  border-radius: 5px;
+/* surf spot filter panel */
+.filter-panel {
+  margin-left: 65px;
+  margin-top: 30px;
+  margin-right: 5px;
 }
 
 h1 {
@@ -39,7 +50,7 @@ h1 {
 .icons {
   background-color: white;
   border: none;
-  color: rgb(26, 129, 170);
+  color: rgb(179, 169, 105);
   padding: 5px 5px;
   margin: 5px;
   font-size: 22px;
@@ -48,7 +59,7 @@ h1 {
 
 .icons:hover {
  color: white;
- background-color: rgb(88, 181, 218);
+ background-color: rgb(179, 169, 105);
 }
 
 /* Nav Bar */
@@ -146,15 +157,15 @@ background-color: rgb(179, 169, 105);
   color: rgb(179, 169, 105);
 }
 
-/* surf cards all spots */
+/* surf spot cards */
 .allSurfSpots {
   display: flex;
   flex-wrap: wrap;
+  /* margin-bottom: 20px; */
 }
 
 .card {
   width: 18rem;
-  border: 1px solid rgb(26, 129, 170);
   margin: 50px 10px 30px 65px;
   transition: transform .2s;
 }
@@ -164,59 +175,29 @@ background-color: rgb(179, 169, 105);
   transform: scale(1.1);
 }
 
-/* surf spot filter panel */
-
-.filter-panel {
-  margin-left: 65px;
-  margin-top: 30px;
-  margin-right: 5px;
+.allSurfSpots a {
+  text-decoration: none;
+  color: rgb(179, 169, 105);
 }
 
-/* login page */
-
-b {
-  font-family: 'Bebas Neue', cursive; 
-  font-size: larger;
+.allSurfSpots a:hover {
+  color: rgb(179, 169, 105);
 }
 
-* {
-  box-sizing: border-box;
-}
-.authImg {
-  /* The image used */
-  background-image: url("../images/surf2.jpg");
-  min-height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  
- 
-}
-
-/* Add styles to the form container */
-.formContainer {
-  position: absolute;
-  margin-top: 70px;
-  margin-left: 65px;
-  max-width: 450px;
-  padding: 40px 25px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-.inputAuth {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-
-}
-
-input[type=text]:focus, input[type=password]:focus {
+.card-subtitle {
   background-color: rgb(179, 169, 105);
-  outline: none;
+  border-radius: 2px;
+  color: white;
+  padding: 3px;
+  /* max-width: 100px; */
 }
 
+/* Edit and Delete Icons */
+.editIcons {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
 
 /* Create surf spot form */
 
@@ -335,3 +316,115 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: rgba(179, 169, 105, .5);
   width: 60%;
 }
+
+/* login page */
+
+b {
+  font-family: 'Bebas Neue', cursive; 
+  font-size: larger;
+}
+
+* {
+  box-sizing: border-box;
+}
+.authImg {
+  /* The image used */
+  background-image: url("../images/surf2.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+ 
+}
+
+/* Add styles to the form container */
+.formContainer {
+  position: absolute;
+  margin-top: 70px;
+  margin-left: 65px;
+  max-width: 450px;
+  padding: 40px 25px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.inputAuth {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: rgb(179, 169, 105);
+  outline: none;
+}
+
+=======
+/* Back button */
+.backBtn {
+  text-decoration: none;
+  color: rgb(179, 169, 105);
+  cursor: pointer;
+  border: 1px solid rgb(179, 169, 105);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.backBtn:hover {
+  color: white;
+  /* text-decoration: none; */
+  background-color: rgb(179, 169, 105);
+}
+
+
+/* Surf Spot profile */
+ #surfSpot {
+  /* border: 2px solid maroon; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  /* background-color: rgba(179, 169, 105, .2); */
+  
+}
+#surfSpot img {
+  max-width: 50%;
+  height: auto;
+  border: 2px solid blue;
+  margin-right: 40px;
+  /* flex-shrink: 0; */
+    min-width: 40%;
+    min-height: 100%
+  
+}
+.spotDetails{
+  padding: 15px;
+} 
+
+.spotDetails span {
+  font-size: 2rem;
+}
+
+.createdAt {
+  font-size: .5rem;
+}
+
+/* Footer */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(179, 169, 105);
+  color: white;
+  padding: 10px;
+  margin-top: 50px;
+}
+
