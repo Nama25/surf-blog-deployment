@@ -73,6 +73,10 @@ h1 {
   color: rgb(179, 169, 105);
 }
 
+/* #nav-bar ul a:active {
+  background-color: aquamarine;
+} */
+
 /* Sign up Login buttons navbar */
 
 .authBtn {
@@ -92,6 +96,8 @@ background-color: rgb(179, 169, 105);
   background-color: rgb(179, 169, 105);
   color: white;
 }
+
+
 
 #logout-form {
   text-decoration: none;
@@ -114,7 +120,8 @@ background-color: rgb(179, 169, 105);
   border: none;
   background-color: rgb(179, 169, 105);
   color: white;
-  padding: 3px 5px;
+  padding: 3px 7px;
+  margin-top: 5px;
   font-size: 1.5rem;
   font-family: 'Bebas Neue', cursive;
 }
@@ -151,9 +158,132 @@ background-color: rgb(179, 169, 105);
   margin-right: 5px;
 }
 
+/* login page */
+
+b {
+  font-family: 'Bebas Neue', cursive; 
+  font-size: larger;
+}
+
+* {
+  box-sizing: border-box;
+}
+.authImg {
+  /* The image used */
+  background-image: url("../images/surf2.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+ 
+}
+
+/* Add styles to the form container */
+.formContainer {
+  position: absolute;
+  margin-top: 70px;
+  margin-left: 65px;
+  max-width: 450px;
+  padding: 40px 25px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.inputAuth {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: rgb(179, 169, 105);
+  outline: none;
+}
 
 
+/* Create surf spot form */
+
+.formImg {
+  background-image: url("../images/surfboards.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px 0px;
 
 
+}
 
+.createFormContainer {
+  position: center;
+  margin-top: 70px;
+  margin-left: 65px;
+  max-width: 800px;
+  padding: 40px 25px;
+  background-color: white;
+  opacity: 85%;
+
+}
+
+.createFormContainer label {
+  font-family: 'Bebas Neue', cursive; 
+  font-size: larger;
+  margin-top: 20px;
+
+}
+
+
+.createHeader {
+  font-family: 'Bebas Neue';
+  font-size: 100px;
+  color: black;
+  background: white;
+  max-width: fit-content;
+  margin-left: 65px;
+  background: white;
+  max-width: fit-content;
+  padding: 0 10px;
+  
+}
+
+.createSub {
+  font-family: 'Bebas Neue';
+  font-size: 100px;
+  color: black;
+  background: white;
+  max-width: fit-content;
+  margin-left: 65px;
+  margin-top: 20px;
+  padding: 0 10px;
+  
+}
+
+
+/* Create user profile */
+
+.userFormImg {
+  background-image: url("../images/vw.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px 0px;
+
+}
+
+/* Edit user profile */
+
+.userEditImg {
+
+  background-image: url("../images/beach.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px 0px;
+
+}
 

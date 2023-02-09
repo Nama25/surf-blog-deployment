@@ -24,8 +24,9 @@
               
                 <a href="/surf-spot/create">Create a Surf Spot</a>
                 <a href="/user/profile/{{user._id}}">My Profile</a>
-                <form class="nav-bar-right" id="logout-form" action="/logout" method="POST">
-                  <button class="logoutBtn">Logout</button>
+                <form class="nav-bar-right" 
+                 action="/logout" method="POST">
+                  <button class="authBtn">Logout</button>
                 </form>
               {{else}}
               <div class="nav-bar-right">

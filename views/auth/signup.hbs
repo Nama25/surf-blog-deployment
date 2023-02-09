@@ -1,23 +1,24 @@
-<h1>Sign Up!</h1>
-{{!-- views/auth/signup.hbs --}}
+{{!--   <div>
+    <img src="images/surf2.jpg" id="authImg" class="img-fluid" alt="Man looking at person surfing">
+  </div> --}}
 
-<div id="form">
-    <h2>Signup</h2>
-    <form class="needs-validation"action="/signup" method="POST">
+<div class="authImg" id="form">
+    
+    <form class="formContainer" class="needs-validation"action="/signup" method="POST">
 
-        <label  class="form-label"> Username
-            <input class="form-control" id="validationDefault03" type="text" name="username" placeholder="Type your username" required/>
-        </label>
+        <label ><b>Username</b></label>
+            <input class="inputAuth" id="validationDefault03" type="text" name="username" placeholder="Type your username" required/>
+       
 
-        <label> Email
-            <input class="form-control" type="email" name="email" placeholder="email@email.com" />
-        </label>
+        <label><b>Email</b></label>
+            <input class="inputAuth" type="email" name="email" placeholder="email@email.com" />
+        
 
-        <label> Password
-            <input class="form-control" type="password" name="password" placeholder="********" />
-        </label>
+        <label> <b>Password </b></label>
+            <input class="inputAuth" type="password" name="password" placeholder="********" />
+       
 
-        <button type="submit">Create surfer account</button>
+        <button type="submit" class="loginBtn">Create surfer account</button>
 
         {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>

@@ -1,16 +1,29 @@
+<div class="userEditImg">
+
+<div>
 {{#if userInSession}}
-  <h1>{{userInSession.username}} Update Your Profile</h1>
+  <h1 class="createHeader">Hey {{userInSession.username}}!</h1>
+  <p class="createSub">Update Your Profile</p>
 {{/if}}
+</div>
 
-<form action="/user/profile/edit/{{result.id}}" method="POST">
 
-  <label>
-    Image:
-  </label>
+<form class="createFormContainer" action="/user/profile/edit/{{result.id}}" method="POST">
 
-  <label>
-    Surf Level:
-    <select name="surfLevel">
+<div class="mb-3">
+ <label for="formGroupInput1" class="form-label">Edit profile image* </label>
+    <input
+      type="text"
+      name="existingImage"
+      class="form-control"
+      id="formGroupInput1"
+      hidden
+      value="{{result.imageUrl}}">
+    </div>
+ 
+<div class="mb-3">
+  <label for="formGroupInput2" class="form-label">Surf Level*</label>
+    <select name="surfLevel" class="form-control" id="formGroupInput2">
       {{#each levelSelected}}
         {{#if chosenLevel}}
           <option value={{this.surfLevel}} selected>{{this.surfLevel}}</option>
@@ -19,11 +32,11 @@
         {{/if}}
       {{/each}}
     </select>
-  </label>
+  </div>
 
-  <label>
-    Type of Surfing:
-    <select name="typeOfSurfing" multiple>
+ <div class="mb-3">
+  <label class="form-label">Type of Surfing*</label>
+    <select class="form-select"  aria-label="multiple select example" name="typeOfSurfing" multiple>
       {{#each typeArray}}
         {{#if isChecked}}
           <option value="{{surfType}}" selected>{{surfType}} </option>
@@ -32,18 +45,22 @@
         {{/if}}
       {{/each}}
     </select>
-  </label>
+  
+  </div>
 
-  <label>
-    My Favorite Spots:
+<div class="mb-3">
+  <label label for="formGroupInput3" class="form-label">My Favorite Spots</label>
     <textarea
+    class="form-control" 
+    id="formGroupInput3"
       name="favoriteSpots"
       placeholder="Tell us about your favorite spots!"
-      cols="20"
-      rows="10"
     >{{result.favoriteSpots}}</textarea>
-  </label>
+  
 
-  <button type="submit"> Update My Profile </button>
+  </div>
+
+  <button class="loginBtn" type="submit"> Update My Profile </button>
 
 </form>
+</div>
