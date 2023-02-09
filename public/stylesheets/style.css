@@ -335,12 +335,6 @@ background-color: rgb(179, 169, 105);
 
 /* Profile page */
 
-.welcomeProfile {
-  font-family: 'Bebas Neue', cursive;
-  margin: 10px 0;
-  padding: 5px;
-  font-size: 90px;
-}
 
 .profilePage {
   margin-top: 40px;
@@ -349,7 +343,7 @@ background-color: rgb(179, 169, 105);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .userDetails {

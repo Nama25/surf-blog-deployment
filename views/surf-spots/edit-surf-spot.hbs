@@ -1,156 +1,194 @@
 <div class="editFormImg">
 
-<div>
-{{#if userInSession}}
-  <h2 class="createHeader">Hey, {{userInSession.username}}!</h2>
-  <p class="createSub">Update your surf spot {{result.beachName}}</p>
-  {{!-- {{else}} --}}
+  <div>
+    {{#if userInSession}}
+      <h2 class="createHeader">Hey, {{userInSession.username}}!</h2>
+      <p class="createSub">Update your surf spot {{result.beachName}}</p>
+      {{!-- {{else}} --}}
 
-  {{! <br /> }}
-  {{! <p>Still no logged in user, sorry!</p> }}
-{{/if}}
-</div>
-
-<form
-  class="createFormContainer"
-  action="/surf-spot/profile/edit/{{result._id}}"
-  method="post"
-  enctype="multipart/form-data"
->
-
- <div class="mb-3">
-  <label for="formGroupInput1" class="form-label">Edit image of surf spot</label>
-    <input type="file" name="updatedImage" />
-    <input
-      type="text"
-      name="existingImage"
-      hidden
-      value="{{result.imageUrl}}"
-       class="form-control"
-        id="formGroupInput1"
-    />
-  
+      {{! <br /> }}
+      {{! <p>Still no logged in user, sorry!</p> }}
+    {{/if}}
   </div>
 
-  <label for="">
-    Name of the beach:
-    <input name="beachName" type="text" value="{{result.beachName}}" />
-  </label>
+  <form
+    class="createFormContainer"
+    action="/surf-spot/profile/edit/{{result._id}}"
+    method="post"
+    enctype="multipart/form-data"
+  >
 
-  <label>
-    Country:
-    <select name="country">
-      {{#each countrySelected}}
-        {{#if selected}}
-          <option value="{{this.country}}" selected>{{this.country}}</option>
-        {{else}}
-          <option value="{{this.country}}">{{this.country}}</option>
-        {{/if}}
-      {{/each}}
-    </select>
-  </label>
+    <div class="mb-3">
+      <label for="formGroupInput1" class="form-label">Edit image of surf spot</label>
+      <input
+        type="file"
+        name="updatedImage"
+        class="form-control"
+        id="formGroupInput1"
+      />
+      <input
+        type="text"
+        name="existingImage"
+        hidden
+        value="{{result.imageUrl}}"
+        class="form-control"
+        id="formGroupInput1"
+      />
 
-  <label for="">
-    Google Map Link:
-    <input type="text" name="mapLink" value="{{result.mapLink}}" />
-  </label>
+    </div>
 
-  <label>
-    Surf Level:
-    <select name="skillLevel">
-      {{#each skillSelected}}
+    <div class="mb-3">
+      <label for="formGroupInput2" class="form-label">Name of the beach</label>
+      <input
+        name="beachName"
+        type="text"
+        class="form-control"
+        id="formGroupInput2"
+        value="{{result.beachName}}"
+      />
+    </div>
 
-        {{#if chosenSkill}}
-          <option
-            value={{this.skillLevel}}
-            selected
-          >{{this.skillLevel}}</option>
-        {{else}}
-          <option value={{this.skillLevel}}>{{this.skillLevel}}</option>
-        {{/if}}
+    <div class="mb-3">
+      <label for="formGroupInput3" class="form-label">Google Map Link</label>
+      <input
+        type="text"
+        name="mapLink"
+        class="form-control"
+        id="formGroupInput3"
+        value="{{result.mapLink}}"
+      />
 
-      {{/each}}
-    </select>
-  </label>
+    </div>
 
-  <label>
-    Surf Spot Description:
-    <textarea
-      name="spotDescription"
-      placeholder="Provide a brief description of your experience at this spot"
-      id=""
-      cols="30"
-      rows="10"
-    >{{result.spotDescription}}</textarea>
-  </label>
+    <div class="mb-3">
+      <label for="formGroupInput4" class="form-label">Country</label>
+      <select name="country" class="form-control" id="formGroupInput4">
+        {{#each countrySelected}}
+          {{#if selected}}
+            <option value="{{this.country}}" selected>{{this.country}}</option>
+          {{else}}
+            <option value="{{this.country}}">{{this.country}}</option>
+          {{/if}}
+        {{/each}}
+      </select>
 
-  <label>
-    Accessibility:
-    <textarea
-      name="accessibility"
-      placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark."
-      id=""
-      cols="30"
-      rows="10"
-    >{{result.accessibility}}</textarea>
-  </label>
+    </div>
 
-  <label>
-    Amenities:
-    <select name="amenities" multiple>
-      {{#each amenitiesArray}}
-        {{#if isChecked}}
-          <option value={{facilityType}} selected>{{facilityType}}</option>
-        {{else}}
-          <option value={{facilityType}}>{{facilityType}}</option>
-        {{/if}}
-      {{/each}}
+    <div class="mb-3">
+      <label for="formGroupInput5" class="form-label">Surf Level</label>
+      <select name="skillLevel" class="form-control" id="formGroupInput5">
+        {{#each skillSelected}}
 
-    </select>
-  </label>
+          {{#if chosenSkill}}
+            <option
+              value={{this.skillLevel}}
+              selected
+            >{{this.skillLevel}}</option>
+          {{else}}
+            <option value={{this.skillLevel}}>{{this.skillLevel}}</option>
+          {{/if}}
 
-  <label>
-    Food:
-    <select name="foodSpots" multiple>
-      {{#each foodArray}}
-        {{#if isChecked}}
-          <option value={{foodType}} selected>{{foodType}}</option>
-        {{else}} 
-          <option value={{foodType}} selected>{{foodType}}</option>
-        {{/if}}  
-      {{/each}}
+        {{/each}}
+      </select>
+    </div>
 
-    </select>
-  </label>
+    <div class="mb-3">
+      <label for="formGroupInput6" class="form-label">Rating</label>
+      <select name="rating" class="form-control" id="formGroupInput6">
+        {{#each ratingSelected}}
+          {{#if chosenRating}}
+            <option value="{{this.rating}}" selected>{{this.rating}}</option>
+          {{else}}
+            <option value="{{this.rating}}">{{this.rating}}</option>
+          {{/if}}
+        {{/each}}
+      </select>
 
-  <label>
-    Rating:
-    <select name="rating">
-      {{#each ratingSelected}}
-        {{#if chosenRating}}
-          <option value="{{this.rating}}" selected>{{this.rating}}</option>
-        {{else}}
-          <option value="{{this.rating}}">{{this.rating}}</option>
-        {{/if}}
-      {{/each}}
-    </select>
-  </label> 
+    </div>
 
-  <label>
-    Type of Surfing:
-    <select name="typeOfSurfing" multiple>
-      {{#each typeArray}}
-        {{#if isChecked}}
-          <option value="{{surfType}}" selected>{{surfType}} </option>
-        {{else}}
-          <option value="{{surfType}}">{{surfType}} </option>
-        {{/if}}
-      {{/each}}
-    </select>
-  </label>
+    <div class="mb-3">
+      <label for="formGroupInput7" class="form-label">Surf Spot Description</label>
+      <textarea
+        name="spotDescription"
+        placeholder="Provide a brief description of your experience at this spot"
+        class="form-control"
+        id="formGroupInput7"
+      >{{result.spotDescription}}</textarea>
+    </div>
 
-  <button type="submit">Save changes</button>
+    <div class="mb-3">
+      <label for="formGroupInput8" class="form-label">Accessibility</label>
+      <textarea
+        name="accessibility"
+        placeholder="How do you access this surf spot eg. 30min hike, easy walk from the carpark."
+        class="form-control"
+        id="formGroupInput8"
+      >{{result.accessibility}}</textarea>
+    </div>
 
-</form>
+    <div class="row">
+      <div class="mb-3 col">
+        <label class="form-label">Type of Surfing</label>
+        <select
+          class="form-select"
+          aria-label="multiple select example"
+          name="typeOfSurfing"
+          multiple
+        >
+          {{#each typeArray}}
+            {{#if isChecked}}
+              <option value="{{surfType}}" selected>{{surfType}} </option>
+            {{else}}
+              <option value="{{surfType}}">{{surfType}} </option>
+            {{/if}}
+          {{/each}}
+        </select>
+
+      </div>
+
+      <div class="mb-3 col">
+        <label class="form-label">Amenities</label>
+        <select
+          class="form-select"
+          aria-label="multiple select example"
+          name="amenities"
+          multiple
+        >
+          {{#each amenitiesArray}}
+            {{#if isChecked}}
+              <option value={{facilityType}} selected>{{facilityType}}</option>
+            {{else}}
+              <option value={{facilityType}}>{{facilityType}}</option>
+            {{/if}}
+          {{/each}}
+
+        </select>
+
+      </div>
+      <div class="mb-3 col">
+        <label class="form-label">Food</label>
+        <select
+          name="foodSpots"
+          class="form-select mb-3"
+          aria-label=".form-select-lg example"
+          multiple
+        >
+          {{#each foodArray}}
+            {{#if isChecked}}
+              <option value={{foodType}} selected>{{foodType}}</option>
+            {{else}}
+              <option value={{foodType}} selected>{{foodType}}</option>
+            {{/if}}
+          {{/each}}
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <button class="loginBtn" type="submit">Save changes</button>
+
+  </form>
 
 </div>
