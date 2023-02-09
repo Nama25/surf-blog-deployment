@@ -1,41 +1,46 @@
-
 <form class="filter-panel" action="/surf-spot/all" method="GET">
-    <a href="/surf-spot/all" class="btns">All Spots</a>
-    <a href="/surf-spot/all-beginner" class="btns">Beginner</a>
-    <a href="/surf-spot/all-intermediate" class="btns">Intermediate</a>
-    <a href="/surf-spot/all-advanced" class="btns">Advanced</a>
+  <a href="/surf-spot/all" class="filterBtns">All Spots</a>
+  <a href="/surf-spot/all-beginner" class="filterBtns">Beginner</a>
+  <a href="/surf-spot/all-intermediate" class="filterBtns">Intermediate</a>
+  <a href="/surf-spot/all-advanced" class="filterBtns">Advanced</a>
 </form>
 
+<div class="allSurfSpots">
 
-  {{! Image of beach }}
-  {{! <img src="" alt=""> }}
-  <div class="allSurfSpots">
-  {{!-- <div class="row"> --}}
-{{#each allResults}}
-<a href="/surf-spot/profile/{{this._id}}">
-  {{!-- <div class="col-sm-6"> --}}
-<div class="card text-center" >
-  <img src="{{imageUrl}}" class="card-img-top" alt="">
-  <div class="card-body">
-        {{!-- Name of the beach: --}}
-      <h5 class="card-title">{{beachName}}</h5>  
+  {{#each allResults}}
 
-      <h6 class="card-subtitle mb-2 text-muted">{{country}}</h6>        
+    <a href="/surf-spot/profile/{{this._id}}">
 
-      <p class="card-text">{{skillLevel}}</p>
+      <div class="card border-1 text-center">
+        <img src="{{imageUrl}}" class="card-img-top" alt="" />
+        <div class="card-body">
 
-      {{#if canEdit}}
-        <a href="/surf-spot/profile/edit/{{_id}}"><i class="fa-solid fa-pen-to-square icons" title="Edit"></i></a>
+          <h5 class="card-title">{{beachName}}</h5>
 
-        <form action="/surf-spot/all/delete/{{_id}}" method="POST">
-          <button class="icons"><i class="fa-solid fa-trash-can" title="Delete"></i></button>
-        </form>
-      {{/if}}
-    </div>
-  </div>
-  {{!-- </div> --}}
-  </a>
+          <h6 class="card-subtitle mb-2">{{country}}</h6>
+
+          <p class="card-text">{{skillLevel}}</p>
+
+          {{#if canEdit}}
+            <div class="editIcons"> 
+              <a href="/surf-spot/profile/edit/{{_id}}"><i
+                  class="fa-solid fa-pen-to-square icons"
+                  title="Edit"
+                ></i></a>
+
+              <form action="/surf-spot/all/delete/{{_id}}" method="POST">
+                <button class="icons"><i
+                    class="fa-solid fa-trash-can"
+                    title="Delete"
+                  ></i></button>
+              </form>
+            </div> 
+          {{/if}}
+        </div>
+      </div>
+
+    </a>
+
   {{/each}}
-{{!-- </div> --}}
-</div>
 
+</div>

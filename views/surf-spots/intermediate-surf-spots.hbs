@@ -1,26 +1,27 @@
-
 <form class="filter-panel" action="/surf-spot/all" method="GET">
-    <a href="/surf-spot/all" class="btns">All Spots</a>
-    <a href="/surf-spot/all-beginner" class="btns">Beginner</a>
-    <a href="/surf-spot/all-intermediate" class="btns">Intermediate</a>
-    <a href="/surf-spot/all-advanced" class="btns">Advanced</a>
+  <a href="/surf-spot/all" class="filterBtns">All Spots</a>
+  <a href="/surf-spot/all-beginner" class="filterBtns">Beginner</a>
+  <a href="/surf-spot/all-intermediate" class="filterBtns">Intermediate</a>
+  <a href="/surf-spot/all-advanced" class="filterBtns">Advanced</a>
 </form>
 
 <div class="allSurfSpots">
-{{#each result}}
- <a href="/surf-spot/profile/{{this._id}}">
-  <div class="card">
-    <img src="{{this.imageUrl}}" alt="">
-    <div class="card-body">
-        <h6>{{this.beachName}}</h6>
 
-        <h6 class="card-subtitle mb-2 text-muted">{{this.country}}</h6>
+  {{#each result}}
+    <a href="/surf-spot/profile/{{this._id}}">
+      <div class="card border-1">
+        <img src="{{this.imageUrl}}" alt="" />
+        <div class="card-body">
+          <h6 class="card-title">{{this.beachName}}</h6>
 
-        <p class="card-text">{{this.skillLevel}}</p>
+          <h6 class="card-subtitle mb-2">{{this.country}}</h6>
+
+          <p class="card-text">{{this.skillLevel}}</p>
+        </div>
       </div>
-    </div>
     </a>
   {{/each}}
+
 </div>
 
-  <a href="/surf-spot/all">Back</a>
+<a href="/surf-spot/all" class="backBtn">Back</a>
