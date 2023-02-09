@@ -97,7 +97,23 @@ background-color: rgb(179, 169, 105);
   color: white;
 }
 
+/* Logout Button */
+.logoutBtn {
+  color: rgb(179, 169, 105);
+  background-color: white;
+  font-size: 3rem;
+  border: none;
+}
 
+/* #nav-bar ul form .logoutBtn {
+  border: none;
+} */
+
+#nav-bar ul form .logoutBtn:hover {
+  background-color: rgb(179, 169, 105);
+  color: white;
+  border: 2px solid white;
+}
 
 #logout-form {
   text-decoration: none;
@@ -106,8 +122,6 @@ background-color: rgb(179, 169, 105);
   border: 2px solid white;
   padding: 2px 8px;
 }
-
-
 
 /* position sign up login logout navbar right */
 
@@ -305,3 +319,19 @@ input[type=text]:focus, input[type=password]:focus {
   font-size: 4rem;
 }
 
+/* Profile page */
+
+.profilePage {
+  margin-top: 40px;
+  background-image: url("/images/surf3.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+}
+
+.userDetails {
+  background-color: rgba(179, 169, 105, .5);
+  width: 60%;
+}

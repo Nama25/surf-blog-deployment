@@ -18,21 +18,19 @@
       <nav id="nav-bar">
         <ul>
              <a href="/">Home</a>
-             <a href="/surf-spot/all">All Surf Spots</a>
+             
               {{!-- <a href="/" title="Home"><img src="images/surfs-up-logo.webp" alt=""></a> --}}
               {{#if user}}
-              
+                <a href="/surf-spot/all">All Surf Spots</a>
                 <a href="/surf-spot/create">Create a Surf Spot</a>
                 <a href="/user/profile/{{user._id}}">My Profile</a>
-                <form class="nav-bar-right" 
-                 action="/logout" method="POST">
-                  <button class="authBtn">Logout</button>
+                <form class="nav-bar-right" action="/logout" method="POST">
+                  <button class="logoutBtn">Logout</button>
                 </form>
               {{else}}
+              
               <div class="nav-bar-right">
                 <button class="authBtn"><a href="/signup">Sign Up</a></button>
-             
-
                 <button class="authBtn"><a href="/login">Login</a></button>
               </div>
               
