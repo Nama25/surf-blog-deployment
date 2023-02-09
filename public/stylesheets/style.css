@@ -1,8 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   /* padding: 0, 10px, 10px, 10px; */
   padding: 10px;
   padding-bottom: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font: 100px; */
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+small {
+  font-family: 'Bebas Neue', cursive;
 }
 
 #homePageImg {
@@ -57,7 +71,7 @@ h1 {
 
 /* Edit and Delete icons / buttons */
 .icons {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   border: none;
   color: rgb(179, 169, 105);
   padding: 5px 5px;
@@ -170,7 +184,6 @@ background-color: rgb(179, 169, 105);
 .allSurfSpots {
   display: flex;
   flex-wrap: wrap;
-  /* margin-bottom: 20px; */
 }
 
 .card {
@@ -322,6 +335,13 @@ background-color: rgb(179, 169, 105);
 
 /* Profile page */
 
+.welcomeProfile {
+  font-family: 'Bebas Neue', cursive;
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 90px;
+}
+
 .profilePage {
   margin-top: 40px;
   background-image: url("/images/surf3.jpg");
@@ -333,8 +353,19 @@ background-color: rgb(179, 169, 105);
 }
 
 .userDetails {
-  background-color: rgba(179, 169, 105, .5);
+  background-color: rgba(255, 255, 255, 0.905);
   width: 60%;
+  padding: 20px;
+}
+
+/* Beach name on surf card */
+.beachNameUser {
+  color: rgb(179, 169, 105);
+}
+
+/* padding between image and user details */
+#postImg {
+  margin-bottom: 10px;;
 }
 
 /* login page */
@@ -344,9 +375,6 @@ b {
   font-size: larger;
 }
 
-* {
-  box-sizing: border-box;
-}
 .authImg {
   /* The image used */
   background-image: url("../images/surf2.jpg");
@@ -382,7 +410,6 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
-
 /* Back button */
 .backBtn {
   text-decoration: none;
@@ -415,13 +442,13 @@ input[type=text]:focus, input[type=password]:focus {
 #surfSpot img {
   max-width: 50%;
   height: auto;
-  border: 2px solid blue;
-  margin-right: 40px;
+  margin-right: 60px;
   /* flex-shrink: 0; */
     min-width: 40%;
     min-height: 100%
   
 }
+
 .spotDetails{
   padding: 15px;
 } 
