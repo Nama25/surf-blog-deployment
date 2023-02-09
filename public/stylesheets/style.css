@@ -287,3 +287,21 @@ input[type=text]:focus, input[type=password]:focus {
 
 }
 
+/* Welcome User on homepage */
+.homepage {
+  position: relative;
+}
+
+.welcomeUser {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-family: 'Bebas Neue', cursive;
+  background-color: rgba(179, 169, 105, .5);
+  /* color: rgb(179, 169, 105); */
+  color: white;
+  padding: 0 15px;
+  margin: 20px;
+  font-size: 4rem;
+}
+
