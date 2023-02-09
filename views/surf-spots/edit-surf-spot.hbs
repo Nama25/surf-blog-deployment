@@ -1,9 +1,9 @@
+<div class="editFormImg">
 
-<h1>Edit {{result.beachName}}</h1>
 
 {{#if userInSession}}
-  <h2>Hey, {{userInSession.username}}!</h2>
-  <p>Update your surf spot</p>
+  <h2 class="createHeader">Hey, {{userInSession.username}}!</h2>
+  <p class="createSub">Update your surf spot {{result.beachName}}</p>
   {{!-- {{else}} --}}
 
   {{! <br /> }}
@@ -147,3 +147,5 @@
   <button type="submit">Save changes</button>
 
 </form>
+
+</div>

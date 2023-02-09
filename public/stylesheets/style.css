@@ -24,6 +24,15 @@ small {
   height: auto;
 }
 
+.indexHeaderImg {
+  background-image: url("../images/surf2.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px 0px;
+}
+
 /* a {
   color: #00b7ff;
   text-decoration: none;
@@ -246,7 +255,7 @@ background-color: rgb(179, 169, 105);
 
 .createHeader {
   font-family: 'Bebas Neue';
-  font-size: 100px;
+  font-size: 90px;
   color: black;
   background: white;
   max-width: fit-content;
@@ -259,7 +268,7 @@ background-color: rgb(179, 169, 105);
 
 .createSub {
   font-family: 'Bebas Neue';
-  font-size: 100px;
+  font-size: 90px;
   color: black;
   background: white;
   max-width: fit-content;
@@ -267,6 +276,17 @@ background-color: rgb(179, 169, 105);
   margin-top: 20px;
   padding: 0 10px;
   
+}
+
+/* Edit surf spot */
+
+.editFormImg {
+  background-image: url("../images/longboarder.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px 0px;
 }
 
 
