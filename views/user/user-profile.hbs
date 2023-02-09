@@ -12,8 +12,8 @@
 
 
 
-  <div class="userDetails">
-    <div id="profileImage">
+  {{!-- <div class="userDetails"> --}}
+ {{!--    <div id="profileImage">
       <img id="postImg" src="{{result.imageUrl}}" alt="User profile picture" />
     </div>
 
@@ -26,7 +26,19 @@
     
       <a href="/user/profile/edit/{{result._id}}"><i class="fa-solid fa-pen-to-square icons"></i></a>
     </div>
+  </div> --}}
+
+<div class="card w-50 " >
+  <img src="{{result.imageUrl}}" alt="User profile picture" class="card-img-top img-fluid">
+  <div class="card-body" >
+    <h5 class="card-title">Level:<span>{{result.surfLevel}}</span></h5>
+    <h5 class="card-title">Type of Surfing:<span>{{result.typeOfSurfing}}</span></h5>
+    <h5 class="card-title">Favorite Spots:<span>{{result.favoriteSpots}}</span></h5>
+    <a href="/user/profile/edit/{{result._id}}"><i class="fa-solid fa-pen-to-square icons"></i></a>
   </div>
+</div>
+
+
 
     <p>My Posts:</p>
     <div class="allSurfSpots">
