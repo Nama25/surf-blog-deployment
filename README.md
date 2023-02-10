@@ -1,6 +1,6 @@
 # Surf's Up
 
-Surf’s Up! Blog
+[Surf’s Up!](https://gifted-dove-lab-coat.cyclic.app/) Blog
 … for a community of surfers and beach lovers.
 Share your favorite surf spots and find beautiful beaches in Europe.
 
