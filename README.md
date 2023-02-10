@@ -1,8 +1,11 @@
 # Surf's Up
 
+Surf’s Up! Blog
+… for a community of surfers and beach lovers.
+Share your favorite surf spots and find beautiful beaches in Europe.
+
 In the mood for surfing and sunshine, then check out out Surf's Up! 
 A collection of surf spots from around Europe brought to you by those that know best, fellow surfers!
-
 
 # Resources
 
@@ -18,7 +21,7 @@ A collection of surf spots from around Europe brought to you by those that know 
 
 - Allow upload of multiple images
 - Allow users to comment on other posts
-- Google map link to 
+- Interactive Google map linking to surf spots 
 
 # Image Sources
 
@@ -32,3 +35,4 @@ A collection of surf spots from around Europe brought to you by those that know 
 
 Special thanks to Omar Kamal, Felipe Mantovani, Carolina A. Garcia and Omar Ali for their help in creating this!
 
+Created by Nadine and Aziza 
