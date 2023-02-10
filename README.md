@@ -18,7 +18,7 @@ A collection of surf spots from around Europe brought to you by those that know 
 
 - Allow upload of multiple images
 - Allow users to comment on other posts
-- 
+- Google map link to 
 
 # Image Sources
 
@@ -30,5 +30,5 @@ A collection of surf spots from around Europe brought to you by those that know 
 
 # Thanks
 
-Special thanks to Omar Kamal, Felipe Mantovani, Carolina A. Garcia and OmarAli for their help in creating this!
+Special thanks to Omar Kamal, Felipe Mantovani, Carolina A. Garcia and Omar Ali for their help in creating this!
 
